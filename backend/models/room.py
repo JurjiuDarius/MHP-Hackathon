@@ -8,5 +8,5 @@ class Room(Bookable):
     id = mapped_column(ForeignKey("bookable.id"), primary_key=True)
 
     __mapper_args__ = {
-        "polymorphic_identity": "desk",
+        "polymorphic_identity": "room",
     }

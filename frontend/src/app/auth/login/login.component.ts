@@ -18,7 +18,6 @@ export class LoginComponent {
     private authService: AuthenticationService,
     private router: Router
   ) {
-    console.log('LoginComponent constructor');
     this.authService.logOut();
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -37,7 +36,7 @@ export class LoginComponent {
         )
         .subscribe({
           next: (response) => {
-            this.router.navigate(['/appointments']);
+            this.router.navigate(['/']);
           },
           error: (error) => {
             this.errorCode = error.status;

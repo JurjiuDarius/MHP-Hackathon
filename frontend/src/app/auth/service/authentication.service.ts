@@ -18,7 +18,7 @@ export class AuthenticationService {
 
   public logIn(email: string, password: string, role: string): Observable<any> {
     return this.http
-      .post(`${this.apiUrl}/auth/login`, { email, password, role })
+      .post(`${this.apiUrl}/login/`, { email, password, role })
       .pipe(
         tap((response: any) => {
           this.setLocalStorage(response.token);
@@ -33,7 +33,7 @@ export class AuthenticationService {
   }
 
   public signUp(user: any, role: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/auth/signup`, { user, role });
+    return this.http.post(`${this.apiUrl}/auth/signup/`, { user, role });
   }
 
   private setLocalStorage(token: string): void {

@@ -16,3 +16,11 @@ class User(db.Model):
         self.password = password
         self.username = username
         self.role = role
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "email": self.email,
+            "username": self.username,
+            "role": self.role,
+        }
