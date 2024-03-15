@@ -6,6 +6,7 @@ from flask_cors import CORS
 from OpenSSL import SSL
 from dotenv import load_dotenv
 import os
+import models
 
 
 def create_ssl_context(cert_location, key_location):
