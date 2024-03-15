@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../service/authentication.service';
+import { concat } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent {
     private authService: AuthenticationService,
     private router: Router
   ) {
+    console.log('LoginComponent constructor');
     this.authService.logOut();
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
