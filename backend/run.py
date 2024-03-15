@@ -3,16 +3,8 @@ from controller import blueprints
 from flask_migrate import Migrate
 from database import db
 from flask_cors import CORS
-from OpenSSL import SSL
 from dotenv import load_dotenv
 import os
-import models
-
-
-def create_ssl_context(cert_location, key_location):
-    context = SSL.Context(SSL.PROTOCOL_TLSv1_2)
-    context.use_privatekey_file(cert_location)
-    context.use_certificate_file(key_location)
 
 
 def create_app():
@@ -36,7 +28,6 @@ migrate = Migrate(
 )
 migrate.init_app(app, db)
 
-print("Working")
 if __name__ == "__main__":
     from argparse import ArgumentParser
 
