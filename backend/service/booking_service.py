@@ -27,8 +27,8 @@ def update_booking(booking_id, date=None, start=None, end=None, room_id=None):
     return booking
 
 
-def delete_booking(user_id, bookable_id):
-    booking = Booking.query.filter_by(user_id=user_id, bookable_id=bookable_id).first()
+def delete_booking(booking_id):
+    booking = Booking.query.get(booking_id)
     db.session.delete(booking)
     db.session.commit()
 

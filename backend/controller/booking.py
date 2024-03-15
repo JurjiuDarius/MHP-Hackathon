@@ -44,10 +44,10 @@ def update_booking(booking_id):
         return jsonify({"error": str(e)}), 400
 
 
-@booking.route("/<int:user_id>/<int:bookable_id>", methods=["DELETE"])
-def delete_booking(booking_id, bookable_id):
+@booking.route("/<int:booking_id>", methods=["DELETE"])
+def delete_booking(booking_id):
     try:
-        booking_service.delete_booking(booking_id, bookable_id)
+        booking_service.delete_booking(booking_id)
         return "", 204
     except Exception as e:
         return jsonify({"error": str(e)}), 400
