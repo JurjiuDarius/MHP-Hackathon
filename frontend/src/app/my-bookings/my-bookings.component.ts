@@ -32,5 +32,7 @@ export class MyBookingsComponent {
       },
     });
   }
-  goToDetails(booking: Booking) {}
+  goToDetails(bookingID: number) {
+    // Navigate to the booking page
+  }
 }

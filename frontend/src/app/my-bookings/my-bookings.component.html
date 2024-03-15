@@ -4,7 +4,7 @@
 </div>
 
 <ng-container *ngFor="let booking of bookings">
-  <mat-card (click)="goToDetails(booking)" class="booking-card">
+  <mat-card (click)="goToDetails(booking.id)" class="booking-card">
     <mat-card-content>
       <div class="booking-info">
         <div class="booking-date">
