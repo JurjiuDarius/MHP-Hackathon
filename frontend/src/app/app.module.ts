@@ -13,8 +13,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MyBookingsComponent } from './my-bookings/my-bookings.component';
+import { FloorMapComponent } from './floor-map/floor-map.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
+
 @NgModule({
-  declarations: [AppComponent, LoginComponent, MyBookingsComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    MyBookingsComponent,
+    FloorMapComponent,
+    NavbarComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,6 +38,10 @@ import { MyBookingsComponent } from './my-bookings/my-bookings.component';
     MatRadioModule,
     HttpClientModule,
     MatCardModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
