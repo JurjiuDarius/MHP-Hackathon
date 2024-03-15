@@ -17,8 +17,9 @@ import { FloorMapComponent } from './floor-map/floor-map.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { NavbarComponent } from './navbar/navbar.component';
-import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
+import {MatMomentDateModule} from "@angular/material-moment-adapter";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,6 @@ import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
     LoginComponent,
     MyBookingsComponent,
     FloorMapComponent,
-    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +42,10 @@ import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
+    MatDatepickerToggle,
+    MatDatepicker,
+    MatDatepickerInput,
+    MatMomentDateModule
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
