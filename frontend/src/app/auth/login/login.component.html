@@ -1,0 +1,76 @@
+<div class="login-container">
+  <mat-card class="mat-card-class">
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            name="email"
+            matInput
+            type="email"
+            formControlName="email"
+            required
+          />
+          <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+            Please enter a valid email
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            name="password"
+            matInput
+            type="password"
+            formControlName="password"
+            required
+            minlength="8"
+          />
+          <mat-error
+            *ngIf="loginForm.controls['password'].hasError('required')"
+          >
+            Password is required
+          </mat-error>
+          <mat-error
+            *ngIf="loginForm.controls['password'].hasError('minlength')"
+          >
+            Password must be at least 8 characters long
+          </mat-error>
+        </mat-form-field>
+        <mat-radio-group formControlName="role">
+          How will you be using the app?
+          <mat-radio-button name="patientButton" value="patient"
+            >Employee</mat-radio-button
+          >
+          <mat-radio-button name="doctorButton" value="doctor"
+            >Admin</mat-radio-button
+          >
+        </mat-radio-group>
+        <button
+          name="loginButton"
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="loginForm.invalid"
+        >
+          Login
+        </button>
+        <button
+          name="signupButton"
+          mat-raised-button
+          class="sign-up-button"
+          color="primary"
+          (click)="goToSignup()"
+        >
+          Sign Up
+        </button>
+      </form>
+      <mat-error *ngIf="this.errorMessage">
+        {{ this.errorMessage }}
+      </mat-error>
+    </mat-card-content>
+  </mat-card>
+</div>
