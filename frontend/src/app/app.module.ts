@@ -17,7 +17,6 @@ import { FloorMapComponent } from './floor-map/floor-map.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { NavbarComponent } from './navbar/navbar.component';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
@@ -26,7 +25,6 @@ import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
     LoginComponent,
     MyBookingsComponent,
     FloorMapComponent,
-    NavbarComponent,
   ],
   imports: [
     BrowserModule,
