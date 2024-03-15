@@ -36,7 +36,7 @@ export class LoginComponent {
         )
         .subscribe({
           next: (response) => {
-            this.router.navigate(['/']);
+            this.router.navigate(['/new-booking']);
           },
           error: (error) => {
             this.errorCode = error.status;
