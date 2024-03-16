@@ -1,15 +1,28 @@
 from database import db
-from models import Booking
+from models import Booking, User
 from utils.date import mdy_to_dmy
 
 
-def create_booking(user_id, bookable_id, date, start, end):
+def create_booking(user_id, bookable_id, date, start, end, people):
     date = mdy_to_dmy(date)
 
     booking = Booking(
         user_id=user_id, bookable_id=bookable_id, date=date, start=start, end=end
     )
     db.session.add(booking)
+
+    for email in people:
+        user = User.query.filter_by(email=email).first()
+        if user:
+            booking = Booking(
+                user_id=user.id,
+                bookable_id=bookable_id,
+                date=date,
+                start=start,
+                end=end,
+                accepted=False,
+            )
+            db.session.add(booking)
     db.session.commit()
     return booking
 

@@ -56,7 +56,7 @@ export class BookDeskDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<BookDeskDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Booking,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private datePipe: DatePipe,
     private userService: UserService,
     private bookingService: BookingService,
@@ -94,7 +94,6 @@ export class BookDeskDialogComponent {
 
   onConfirm(): void {
     console.log(this.selectedPeople);
-    console.log(this.data);
     // check if start time is before end time
     if (this.startTime >= this.endTime) {
       this.snackbar.open(
@@ -128,6 +127,8 @@ export class BookDeskDialogComponent {
 
     this.data.start = this.startTime;
     this.data.end = this.endTime;
+    this.data.people = this.selectedPeople;
+
     this.bookingService.createBooking(this.data).subscribe();
     this.dialogRef.close();
   }

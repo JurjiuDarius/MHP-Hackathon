@@ -17,6 +17,7 @@ def create_booking():
             data["date"],
             data["start"],
             data["end"],
+            data["people"],
         )
         return jsonify(booking.serialize()), 201
     except Exception as e:

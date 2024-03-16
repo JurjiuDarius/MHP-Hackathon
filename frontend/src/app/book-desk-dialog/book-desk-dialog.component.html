@@ -52,8 +52,8 @@
       </mat-card-content>
       <mat-card-content *ngFor="let person of users">
         <mat-checkbox
-          [checked]="selectedPeople.includes(person.username)"
-          (change)="toggleSelection(person.username)"
+          [checked]="selectedPeople.includes(person.email)"
+          (change)="toggleSelection(person.email)"
         >
           {{ person.email }}
         </mat-checkbox>
