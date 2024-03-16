@@ -1,12 +1,24 @@
 from database import db
-from models import Booking, User
+from models import Booking, User, Room
 from datetime import datetime, timedelta
 from sqlalchemy import and_
-from utils.date import mdy_to_dmy
+from utils.date import mdy_to_dmy, is_date
 
 
 def create_booking(user_id, bookable_id, date, start, end, people):
     date = mdy_to_dmy(date)
+    if is_date(date, date_format="%m/%d/%Y") is False:
+        return "Invalid date", 400
+    if start > end:
+        return "Invalid time", 400
+    if len(people) > 0:
+        room = Room.query.get(bookable_id)
+        if not room:
+            return "Room not found", 404
+        if len(people) + 1 > room.capacity:
+            return "Too many people for the room", 400
+        if len(people) + 1 < room.capacity / 2:
+            return "Too few people for the room", 400
 
     booking = Booking(
         user_id=user_id, bookable_id=bookable_id, date=date, start=start, end=end
@@ -37,6 +49,8 @@ def update_booking(booking_id, date=None, start=None, end=None, room_id=None):
     booking = Booking.query.get(booking_id)
     if date:
         date = mdy_to_dmy(date)
+        if is_date(date, date_format="%m/%d/%Y") is False:
+            return "Invalid date", 400
         booking.date = date
     if start:
         booking.start = start
@@ -56,6 +70,8 @@ def delete_booking(booking_id):
 
 def filter_bookings_by_date(date):
     date = mdy_to_dmy(date)
+    if is_date(date, date_format="%m/%d/%Y") is False:
+        return "Invalid date", 400
 
     filtered_bookings = Booking.query.filter_by(date=date).all()
     return [booking.serialize() for booking in filtered_bookings]

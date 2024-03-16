@@ -1,8 +1,8 @@
 from models import Room, Desk, Bookable, Booking
 from database import db
-from utils.date import mdy_to_dmy
-import datetime
+from utils.date import mdy_to_dmy, is_date
 from ai_component.ai_interactive_logic import ai_controller
+import datetime
 
 
 def get_bookable_capacity(bookable_id):
@@ -20,6 +20,8 @@ def get_bookable_capacity(bookable_id):
 def get_bookable_availability(data):
     bookable_id = data["bookableId"]
     date = data["date"]
+    if is_date(date, date_format="%m/%d/%Y") is False:
+        return "Invalid date", 400
     date = mdy_to_dmy(date)
     date_object = datetime.datetime.strptime(date, "%d/%m/%Y")
     day_of_week_numeric = date_object.weekday()
@@ -39,6 +41,8 @@ def get_bookable_colors(data):
     """Check if a room has no occupation, is partially occupied or fully occupied"""
     date = data["date"]
     date = mdy_to_dmy(date)
+    if is_date(date, date_format="%m/%d/%Y") is False:
+        return "Invalid date", 400
     bookables = Bookable.query.all()
     color_dictionary = {}
     for bookable in bookables:
