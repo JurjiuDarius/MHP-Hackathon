@@ -1,7 +1,7 @@
-from models import Room, Desk
+from models import Room, Desk, Bookable, Booking
 from database import db
 from utils.date import mdy_to_dmy
-from datetime import datetime
+import datetime
 from ai_component.ai_interactive_logic import ai_controller
 
 
@@ -21,7 +21,7 @@ def get_bookable_availability(data):
     bookable_id = data["bookableId"]
     date = data["date"]
     date = mdy_to_dmy(date)
-    date_object = datetime.strptime(date, "%d/%m/%Y")
+    date_object = datetime.datetime.strptime(date, "%d/%m/%Y")
     day_of_week_numeric = date_object.weekday()
     if day_of_week_numeric > 4:
         return "The date is not a weekday", 400
@@ -33,3 +33,29 @@ def get_bookable_availability(data):
     morning_availability = "{:.2f}".format(morning_availability)
     evening_availability = "{:.2f}".format(evening_availability)
     return [morning_availability, evening_availability], 200
+
+
+def get_bookable_colors(data):
+    """Check if a room has no occupation, is partially occupied or fully occupied"""
+    date = data["date"]
+    date = mdy_to_dmy(date)
+    bookables = Bookable.query.all()
+    color_dictionary = {}
+    for bookable in bookables:
+        bookings = Booking.query.filter_by(bookable_id=bookable.id, date=date).all()
+        min_start = datetime.time(17, 0)
+        max_end = datetime.time(9, 0)
+        if len(bookings) == 0:
+            color_dictionary[bookable.id] = 0
+            continue
+        for booking in bookings:
+            current_start = booking.start
+            current_end = booking.end
+            min_start = min(min_start, current_start)
+            max_end = max(max_end, current_end)
+        if min_start < datetime.time(9, 0) and max_end > datetime.time(17, 0):
+            color_dictionary[bookable.id] = 2
+        else:
+            color_dictionary[bookable.id] = 1
+
+    return color_dictionary, 200

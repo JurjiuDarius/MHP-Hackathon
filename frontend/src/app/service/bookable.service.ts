@@ -23,4 +23,7 @@ export class BookableService {
       date,
     });
   }
+  getBookingColors(date: string) {
+    return this.http.post(`${this.apiUrl}/bookables/colors`, { date });
+  }
 }

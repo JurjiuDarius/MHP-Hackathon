@@ -15,3 +15,10 @@ def get_availability():
     data = request.json
     result, status = bookable_service.get_bookable_availability(data)
     return jsonify(result), status
+
+
+@bookable_blueprint.route("/colors", methods=["POST"])
+def get_colors():
+    data = request.json
+    result, status = bookable_service.get_bookable_colors(data)
+    return jsonify(result), status

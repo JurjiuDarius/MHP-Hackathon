@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BookDeskDialogComponent } from '../book-desk-dialog/book-desk-dialog.component';
 import { Booking } from '../models/booking';
 import { DatePipe } from '@angular/common';
+import { BookableService } from '../service/bookable.service';
 
 @Component({
   selector: 'app-floor-map',
@@ -157,15 +158,25 @@ export class FloorMapComponent {
     'JockerLap',
     'Quick8',
     'PolePosition',
-    'Cockpit'
+    'Cockpit',
   ];
 
   occupationDict: { [id: string]: number } = {};
 
-
-
-  constructor(public dialog: MatDialog, private datePipe: DatePipe) {
-    this.buttonIds.forEach(id => {
+  constructor(
+    public dialog: MatDialog,
+    private datePipe: DatePipe,
+    private bookableService: BookableService
+  ) {
+    this.bookableService.getBookingColors(this.getFormattedDate()).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+    this.buttonIds.forEach((id) => {
       this.occupationDict[id] = 0;
     });
   }
@@ -204,6 +215,21 @@ export class FloorMapComponent {
 
     this.dialog.open(BookDeskDialogComponent, {
       data: this.booking,
+    });
+  }
+
+  onDateSelected(date: any): void {
+    this.selectedDate = this.getFormattedDate();
+    console.log(this.selectedDate);
+    this.bookableService.getBookingColors(this.getFormattedDate()).subscribe({
+      next: (response) => {
+        for (const [key, value] of Object.entries(response)) {
+          this.occupationDict[key] = value;
+        }
+      },
+      error: (error) => {
+        console.log(error);
+      },
     });
   }
 }

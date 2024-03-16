@@ -1,20 +1,29 @@
 <section>
   <mat-form-field class="example-full-width">
     <mat-label>Choose a date</mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" />
     <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
   </mat-form-field>
+  <button (click)="onDateSelected($event)">
+    Click to view desk availability
+  </button>
 </section>
 <section class="harta">
-  <img class="locuri_background" src="assets/HartaLocuriBackground.jpg">
+  <img class="locuri_background" src="assets/HartaLocuriBackground.jpg" />
 
-  <button *ngFor="let buttonId of buttonIds" [id]="buttonId" [class.loc-liber]="occupationDict[buttonId] === 0" [class.loc-semi-ocupat]="occupationDict[buttonId] === 1" [class.loc-ocupat]="occupationDict[buttonId] === 2" mat-mini-fab (click)="openDialog(buttonId)">
+  <button
+    *ngFor="let buttonId of buttonIds"
+    [id]="buttonId"
+    [class.loc-liber]="occupationDict[buttonId] === 0"
+    [class.loc-semi-ocupat]="occupationDict[buttonId] === 1"
+    [class.loc-ocupat]="occupationDict[buttonId] === 2"
+    mat-mini-fab
+    (click)="openDialog(buttonId)"
+  >
     <mat-icon *ngIf="occupationDict[buttonId] === 0">add</mat-icon>
     <mat-icon *ngIf="occupationDict[buttonId] === 1">remove</mat-icon>
     <mat-icon *ngIf="occupationDict[buttonId] === 2">clear</mat-icon>
   </button>
-
-
 </section>
