@@ -168,17 +168,7 @@ export class FloorMapComponent {
     private datePipe: DatePipe,
     private bookableService: BookableService
   ) {
-    this.bookableService.getBookingColors(this.getFormattedDate()).subscribe({
-      next: (response) => {
-        console.log(response);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
-    this.buttonIds.forEach((id) => {
-      this.occupationDict[id] = 0;
-    });
+    this.setOccupationDict();
   }
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
@@ -213,12 +203,19 @@ export class FloorMapComponent {
       end: '',
     };
 
-    this.dialog.open(BookDeskDialogComponent, {
-      data: this.booking,
-    });
+    this.dialog
+      .open(BookDeskDialogComponent, {
+        data: this.booking,
+      })
+      .afterClosed()
+      .subscribe((result) => {
+        this.setOccupationDict();
+      });
   }
-
-  onDateSelected(date: any): void {
+  onDateSelected(event: any): void {
+    this.setOccupationDict();
+  }
+  setOccupationDict() {
     this.bookableService.getBookingColors(this.getFormattedDate()).subscribe({
       next: (response) => {
         for (const [key, value] of Object.entries(response)) {
