@@ -19,7 +19,7 @@ export class OngoingBookingsComponent {
     private dialog: MatDialog
   ) {
     this.userId = parseInt(localStorage.getItem('currentUserId')!);
-    this.bookingService.getBookingsForUser(this.userId).subscribe({
+    this.bookingService.getCurrentBookingsForUser(this.userId).subscribe({
       next: (response) => {
         this.bookings = response;
       },

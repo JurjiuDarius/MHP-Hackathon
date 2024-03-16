@@ -19,10 +19,6 @@ export class BookingService {
     return this.http.post(`${this.apiUrl}/bookings/`, booking);
   }
 
-  getBookable(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/bookables/`);
-  }
-
   updateBooking(booking: Booking) {
     return this.http.put(`${this.apiUrl}/bookings/`, booking);
   }
@@ -33,7 +29,10 @@ export class BookingService {
   getBookingsByDate(date: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/bookings/filter-by-date/`, { date });
   }
-  getBookingsForUser(userId: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/bookings/user/${userId}`);
+  getCurrentBookingsForUser(userId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/bookings/current/user/${userId}`);
+  }
+  getPastBookingsForUser(userId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/bookings/past/user/${userId}`);
   }
 }

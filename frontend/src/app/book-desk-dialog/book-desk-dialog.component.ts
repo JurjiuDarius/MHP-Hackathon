@@ -24,8 +24,8 @@ import { BookingService } from '../service/booking.service';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BookableService } from '../service/bookable.service';
-import {BehaviorSubject, Observable} from "rxjs";
-import {Bookable} from "../models/bookable";
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Bookable } from '../models/bookable';
 
 @Component({
   selector: 'app-book-desk-dialog',
@@ -92,14 +92,6 @@ export class BookDeskDialogComponent {
       },
     });
 
-    this.bookingService.getBookable().subscribe({
-      next: (response) => {
-        this.bookableList = response;
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    })
     this.userService.getUsers().subscribe({
       next: (response) => {
         this.users = response;
@@ -117,7 +109,7 @@ export class BookDeskDialogComponent {
       },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       window.location.reload(); // Refresh the page
     });
@@ -134,7 +126,6 @@ export class BookDeskDialogComponent {
   onCancel(): void {
     this.dialogRef.close();
   }
-
 
   onConfirm(): void {
     console.log(this.selectedPeople);

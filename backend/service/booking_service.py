@@ -1,5 +1,7 @@
 from database import db
 from models import Booking, User
+from datetime import datetime, timedelta
+from sqlalchemy import and_
 from utils.date import mdy_to_dmy
 
 
@@ -62,10 +64,30 @@ def filter_bookings_by_date(date):
 def get_all_bookings():
     return [booking.serialize() for booking in Booking.query.all()]
 
-def get_bookings_for_user(user_id):
-    #checkk if user exists
+
+def get_current_bookings_for_user(user_id):
+    # checkk if user exists
     user = User.query.get(user_id)
     if not user:
         return {"message": "User not found!"}, 404
-    
-    return [booking.serialize() for booking in Booking.query.filter_by(user_id=user_id).all()], 200
+    current_bookings = Booking.query.filter(
+        and_(
+            Booking.user_id == user_id,
+            Booking.date > (datetime.now() - timedelta(1)).date(),
+        ),
+    ).all()
+    return [booking.serialize() for booking in current_bookings], 200
+
+
+def get_past_bookings_for_user(user_id):
+    # checkk if user exists
+    user = User.query.get(user_id)
+    if not user:
+        return {"message": "User not found!"}, 404
+    past_bookings = Booking.query.filter(
+        and_(
+            Booking.date < datetime.now().date(),
+            Booking.user_id == user_id,
+        )
+    ).all()
+    return [booking.serialize() for booking in past_bookings], 200

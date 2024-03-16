@@ -6,7 +6,8 @@ from service import booking_service
 
 booking_blueprint = Blueprint("booking", __name__, url_prefix="/bookings")
 
-@check_authorization(["admin", "user"])
+
+@check_authorization(["admin", "employee"])
 @booking_blueprint.route("/", methods=["POST"])
 def create_booking():
     try:
@@ -23,7 +24,8 @@ def create_booking():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-@check_authorization(["admin", "user"])
+
+@check_authorization(["admin", "employee"])
 @booking_blueprint.route("/<int:booking_id>", methods=["GET"])
 def get_booking(booking_id):
     booking = booking_service.get_booking(booking_id)
@@ -32,7 +34,8 @@ def get_booking(booking_id):
     else:
         return jsonify({"error": "Booking not found"}), 404
 
-@check_authorization(["admin", "user"])
+
+@check_authorization(["admin", "employee"])
 @booking_blueprint.route("/<int:booking_id>", methods=["PUT"])
 def update_booking(booking_id):
     try:
@@ -48,7 +51,8 @@ def update_booking(booking_id):
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-@check_authorization(["admin", "user"])
+
+@check_authorization(["admin", "employee"])
 @booking_blueprint.route("/<int:booking_id>", methods=["DELETE"])
 def delete_booking(booking_id):
     try:
@@ -57,22 +61,32 @@ def delete_booking(booking_id):
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-@check_authorization(["admin", "user"])
+
+@check_authorization(["admin", "employee"])
 @booking_blueprint.route("/", methods=["GET"])
 def get_all_bookings():
     all_bookings = booking_service.get_all_bookings()
 
     return jsonify(all_bookings)
 
-@check_authorization(["admin", "user"])
+
+@check_authorization(["admin", "employee"])
 @booking_blueprint.route("/filter-by-date/", methods=["POST"])
 def filter_bookings_by_date():
     booking_date = request.json["date"]
     bookings = booking_service.filter_bookings_by_date(booking_date)
     return jsonify(bookings), 200
 
-@check_authorization(["admin", "user"])
-@booking_blueprint.route("/user/<int:user_id>", methods=["GET"])
-def get_bookings_for_user(user_id):
-    bookings, status = booking_service.get_bookings_for_user(user_id)
+
+@check_authorization(["admin", "employee"])
+@booking_blueprint.route("/current/user/<int:user_id>", methods=["GET"])
+def get_current_bookings_for_user(user_id):
+    bookings, status = booking_service.get_current_bookings_for_user(user_id)
+    return jsonify(bookings), status
+
+
+@check_authorization(["admin", "employee"])
+@booking_blueprint.route("/past/user/<int:user_id>", methods=["GET"])
+def get_past_bookings_for_user(user_id):
+    bookings, status = booking_service.get_past_bookings_for_user(user_id)
     return jsonify(bookings), status
