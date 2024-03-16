@@ -20,8 +20,8 @@ def get_bookable_capacity(bookable_id):
 def get_bookable_availability(data):
     bookable_id = data["bookableId"]
     date = data["date"]
-
-    date_object = datetime.strptime(date, "%m/%d/%Y")
+    date = mdy_to_dmy(date)
+    date_object = datetime.strptime(date, "%d/%m/%Y")
     day_of_week_numeric = date_object.weekday()
     if day_of_week_numeric > 4:
         return "The date is not a weekday", 400
