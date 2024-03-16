@@ -40,7 +40,7 @@ export class BookDeskDialogComponent {
   selectedPeople: string[] = [];
 
   constructor(public dialogRef: MatDialogRef<BookDeskDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: string, private userService: UserService, private bookingService: BookingService){
+              @Inject(MAT_DIALOG_DATA) public data: Booking, private userService: UserService, private bookingService: BookingService){
     this.userService.getUsers().subscribe({
       next: (response) => {
         this.users = response;
@@ -78,6 +78,7 @@ export class BookDeskDialogComponent {
     // Perform confirmation logic here
     console.log(this.selectedPeople)
     console.log(this.data)
+    this.bookingService.createBooking(this.data);
     this.dialogRef.close();
   }
 
