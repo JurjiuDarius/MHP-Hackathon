@@ -22,6 +22,7 @@ import { User } from '../models/user';
 import { UserService } from '../service/user.service';
 import { BookingService } from '../service/booking.service';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-book-desk-dialog',
@@ -58,7 +59,8 @@ export class BookDeskDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: Booking,
     private datePipe: DatePipe,
     private userService: UserService,
-    private bookingService: BookingService
+    private bookingService: BookingService,
+    private snackbar: MatSnackBar
   ) {
     this.userService.getUsers().subscribe({
       next: (response) => {
@@ -93,6 +95,36 @@ export class BookDeskDialogComponent {
   onConfirm(): void {
     console.log(this.selectedPeople);
     console.log(this.data);
+    // check if start time is before end time
+    if (this.startTime >= this.endTime) {
+      this.snackbar.open(
+        'The start time needs to be before the end time !',
+        'Close',
+        {
+          duration: 2000,
+        }
+      );
+      return;
+    }
+    //check if there are other bookings for the same desk
+    for (let booking of this.bookings) {
+      if (booking.bookable_id === this.data.bookable_id) {
+        if (
+          (this.startTime >= booking.start && this.startTime <= booking.end) ||
+          (this.endTime >= booking.start && this.endTime <= booking.end) ||
+          (this.startTime <= booking.start && this.endTime >= booking.end)
+        ) {
+          this.snackbar.open(
+            'The desk is already booked for the selected time interval !',
+            'Close',
+            {
+              duration: 2000,
+            }
+          );
+          return;
+        }
+      }
+    }
 
     this.data.start = this.startTime;
     this.data.end = this.endTime;
