@@ -18,6 +18,13 @@ def one_hot_encode(day_of_week_numeric):
     one_hot = tf.one_hot(day_of_week_numeric, num_classes)
     return one_hot
 
+def one_hot_encode_day(day_of_week_numeric):
+    # Define the number of classes (days of the week)
+    num_classes = 5
+    # Create one-hot encoding
+    one_hot = tf.one_hot(day_of_week_numeric, num_classes)
+    return one_hot
+
 def get_conference_room_number(conference_room):
     if conference_room == "Quick 8":
         return 0
@@ -41,6 +48,7 @@ class ai_controller:
         self.meeting_rooms_11_13 = tf.keras.models.load_model('ai_component/models/meeting-rooms-11-13-0.57.keras')
         self.meeting_rooms_13_15 = tf.keras.models.load_model('ai_component/models/meeting-rooms-13-15-0.62.keras')
         self.meeting_rooms_15_17 = tf.keras.models.load_model('ai_component/models/meeting-rooms-15-17-0.56.keras')
+        self.presences = tf.keras.models.load_model('ai_component/models/presences-0-00.keras')
 
     def get_desk_prediction_morning(self, desk, day):
         deskname = desk + " " + str(get_day_of_week_numeric(day))
@@ -99,3 +107,10 @@ class ai_controller:
             return 0
         else:
             return 1
+
+    def get_presence_prediction(self, day):
+        encoded_day = one_hot_encode_day(get_day_of_week_numeric(day))
+        array = np.array([[encoded_day]])
+        array = np.array([data_entry.flatten() for data_entry in array])
+        prediction = self.presences.predict(array)
+        return prediction[0][0]
