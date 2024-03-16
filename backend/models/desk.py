@@ -5,7 +5,7 @@ from sqlalchemy import ForeignKey
 
 
 class Desk(Bookable):
-    id = mapped_column(ForeignKey("bookable.id"), primary_key=True)
+    id = db.Column(db.String, db.ForeignKey("bookable.id"), primary_key=True)
 
     number_available = db.Column(db.Integer, nullable=False)
 
