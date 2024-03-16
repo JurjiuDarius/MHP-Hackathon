@@ -7,7 +7,12 @@ from utils.date import mdy_to_dmy, is_date
 
 def create_booking(user_id, bookable_id, date, start, end, people):
     date = mdy_to_dmy(date)
-    if is_date(date, date_format="%m/%d/%Y") is False:
+    if (
+        is_date(
+            date,
+        )
+        is False
+    ):
         return "Invalid date", 400
     if start > end:
         return "Invalid time", 400
@@ -49,7 +54,12 @@ def update_booking(booking_id, date=None, start=None, end=None, room_id=None):
     booking = Booking.query.get(booking_id)
     if date:
         date = mdy_to_dmy(date)
-        if is_date(date, date_format="%m/%d/%Y") is False:
+        if (
+            is_date(
+                date,
+            )
+            is False
+        ):
             return "Invalid date", 400
         booking.date = date
     if start:
@@ -70,7 +80,12 @@ def delete_booking(booking_id):
 
 def filter_bookings_by_date(date):
     date = mdy_to_dmy(date)
-    if is_date(date, date_format="%m/%d/%Y") is False:
+    if (
+        is_date(
+            date,
+        )
+        is False
+    ):
         return "Invalid date", 400
 
     filtered_bookings = Booking.query.filter_by(date=date).all()

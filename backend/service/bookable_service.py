@@ -20,7 +20,12 @@ def get_bookable_capacity(bookable_id):
 def get_bookable_availability(data):
     bookable_id = data["bookableId"]
     date = data["date"]
-    if is_date(date, date_format="%m/%d/%Y") is False:
+    if (
+        is_date(
+            date,
+        )
+        is False
+    ):
         return "Invalid date", 400
     date = mdy_to_dmy(date)
     date_object = datetime.datetime.strptime(date, "%d/%m/%Y")
@@ -41,7 +46,12 @@ def get_bookable_colors(data):
     """Check if a room has no occupation, is partially occupied or fully occupied"""
     date = data["date"]
     date = mdy_to_dmy(date)
-    if is_date(date, date_format="%m/%d/%Y") is False:
+    if (
+        is_date(
+            date,
+        )
+        is False
+    ):
         return "Invalid date", 400
     bookables = Bookable.query.all()
     color_dictionary = {}

@@ -161,13 +161,25 @@ export class FloorMapComponent {
     'Cockpit',
   ];
 
-  occupationDict: { [id: string]: Number } = {};
+  occupationDict: { [id: string]: number } = {};
 
   constructor(
     public dialog: MatDialog,
     private datePipe: DatePipe,
     private bookableService: BookableService
-  ) {}
+  ) {
+    this.bookableService.getBookingColors(this.getFormattedDate()).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+    this.buttonIds.forEach((id) => {
+      this.occupationDict[id] = 0;
+    });
+  }
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     if (view === 'month') {
@@ -206,20 +218,18 @@ export class FloorMapComponent {
     });
   }
 
-  setBookingColors() {
+  onDateSelected(date: any): void {
+    this.selectedDate = this.getFormattedDate();
+    console.log(this.selectedDate);
     this.bookableService.getBookingColors(this.getFormattedDate()).subscribe({
       next: (response) => {
-        for (let key in response) {
-          this.occupationDict[key] = Number(response[key]);
+        for (const [key, value] of Object.entries(response)) {
+          this.occupationDict[key] = value;
         }
       },
       error: (error) => {
         console.log(error);
       },
     });
-  }
-  onDateSelected(date: any): void {
-    this.selectedDate = this.getFormattedDate();
-    this.setBookingColors();
   }
 }
