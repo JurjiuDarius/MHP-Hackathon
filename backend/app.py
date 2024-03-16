@@ -9,7 +9,7 @@ import models
 
 
 def create_app():
-    load_dotenv()
+    load_dotenv(override=True)
     app = Flask(__name__)
     env_config = os.getenv("APP_SETTINGS")
     app.config.from_object(env_config)
