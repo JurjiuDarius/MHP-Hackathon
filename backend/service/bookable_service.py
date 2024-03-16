@@ -1,8 +1,7 @@
 from models import Room, Desk
 from database import db
 from utils.date import mdy_to_dmy
-import numpy as np
-
+from datetime import datetime
 from ai_component.ai_interactive_logic import ai_controller
 
 
@@ -21,7 +20,12 @@ def get_bookable_capacity(bookable_id):
 def get_bookable_availability(data):
     bookable_id = data["bookableId"]
     date = data["date"]
-    date = mdy_to_dmy(date)
+
+    date_object = datetime.strptime(date, "%m/%d/%Y")
+    day_of_week_numeric = date_object.weekday()
+    if day_of_week_numeric > 4:
+        return "The date is not a weekday", 400
+
     ai = ai_controller()
     morning_availability = ai.get_desk_prediction_morning(bookable_id, date)
     evening_availability = ai.get_desk_prediction_evening(bookable_id, date)
