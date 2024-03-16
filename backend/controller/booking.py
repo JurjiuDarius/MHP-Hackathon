@@ -18,7 +18,7 @@ def create_booking():
             data["start"],
             data["end"],
         )
-        return jsonify(booking), 201
+        return jsonify(booking.serialize()), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
@@ -59,13 +59,13 @@ def delete_booking(booking_id):
 
 @booking_blueprint.route("/", methods=["GET"])
 def get_all_bookings():
-    all_bookings = Booking.query.all()
+    all_bookings = booking_service.get_all_bookings()
 
     return jsonify(all_bookings)
 
 
-@booking_blueprint.route("/filter-by-date", methods=["GET"])
-def filter_bookings_by_date():
+@booking_blueprint.route("/filter-by-date/<date:booking_date>", methods=["GET"])
+def filter_bookings_by_date(booking_date):
     date = request.args.get("date")
-    bookings = booking_service.filter_bookings_by_date(date)
+    bookings = booking_service.filter_bookings_by_date(booking_date)
     return jsonify(bookings)

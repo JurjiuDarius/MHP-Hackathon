@@ -68,8 +68,8 @@ export class BookDeskDialogComponent {
         console.log(error);
       },
     });
-
-    this.bookingService.getBookings().subscribe({
+    console.log(data.date);
+    this.bookingService.getBookingsByDate(data.date).subscribe({
       next: (response) => {
         this.bookings = response;
       },

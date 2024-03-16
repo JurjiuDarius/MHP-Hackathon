@@ -12,13 +12,10 @@
       </mat-card-content>
       <mat-card-content *ngFor="let booking of bookings">
         <ng-container *ngIf="booking.bookable_id === data.bookable_id">
-          <mat-checkbox
-            [checked]="selectedPeople.includes(booking.bookable_id)"
-            (change)="toggleSelection(booking.bookable_id)"
-          >
-            Date: {{ booking.date }} Start: {{ booking.start }} End:
+          <mat-card>
+            Start: {{ booking.start }} End:
             {{ booking.end }}
-          </mat-checkbox>
+          </mat-card>
         </ng-container>
       </mat-card-content>
     </mat-card>

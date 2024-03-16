@@ -25,4 +25,7 @@ export class BookingService {
   deleteBooking(bookingID: number) {
     return this.http.delete(`${this.apiUrl}/bookings/${bookingID}`);
   }
+  getBookingsByDate(date: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/bookings/date/${date}`);
+  }
 }

@@ -1,4 +1,5 @@
 from database import db
+from utils.json import json_serial_date
 
 
 class Booking(db.Model):
@@ -22,7 +23,7 @@ class Booking(db.Model):
         return {
             "user_id": self.user_id,
             "bookable_id": self.bookable_id,
-            "date": self.date,
-            "start": self.start,
-            "end": self.end,
+            "date": json_serial_date(self.date),
+            "start": str(self.start),
+            "end": str(self.end),
         }
