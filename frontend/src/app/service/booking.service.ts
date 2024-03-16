@@ -11,15 +11,15 @@ export class BookingService {
   constructor(private http: HttpClient) {}
 
   getBookings(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/bookings`);
+    return this.http.get(`${this.apiUrl}/bookings/`);
   }
 
   createBooking(booking: Booking) {
-    return this.http.post(`${this.apiUrl}/bookings`, booking);
+    return this.http.post(`${this.apiUrl}/bookings/`, booking);
   }
 
   updateBooking(booking: Booking) {
-    return this.http.put(`${this.apiUrl}/bookings`, booking);
+    return this.http.put(`${this.apiUrl}/bookings/`, booking);
   }
 
   deleteBooking(bookingID: number) {

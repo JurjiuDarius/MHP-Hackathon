@@ -12,7 +12,11 @@ def create_booking():
     try:
         data = request.json
         booking = booking_service.create_booking(
-            data["user_id"], data["room_id"], data["date"], data["start"], data["end"]
+            data["user_id"],
+            data["bookable_id"],
+            data["date"],
+            data["start"],
+            data["end"],
         )
         return jsonify(booking), 201
     except Exception as e:
