@@ -1,0 +1,38 @@
+.modal{
+  width: 550px;
+  height: 500px;
+}
+
+h2{
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.middle-div{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.alte-rezervari{
+  width: 60%;
+  height: 200px;
+}
+
+.participanti-meeting{
+  height: 140px;
+  overflow-y: scroll;;
+}
+
+mat-card-header{
+  position: fixed;
+  background-color: white;
+  z-index: 1;
+}
+
+.time-selection{
+  margin-left: 10px;
+}
+
+mat-dialog-actions{
+  justify-content: right;
+}

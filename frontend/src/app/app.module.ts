@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { MatCard, MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,9 +24,11 @@ import {
   MatDatepickerToggle,
 } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import {UserPageComponent} from "./user-page/user-page.component";
-import {MatTab, MatTabGroup, MatTabLabel} from "@angular/material/tabs";
-import {OngoingBookingsComponent} from "./ongoing-bookings/ongoing-bookings.component";
+import { UserPageComponent } from './user-page/user-page.component';
+import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
+import { OngoingBookingsComponent } from './ongoing-bookings/ongoing-bookings.component';
+import { MatSelectModule } from '@angular/material/select';
+import { BookDeskDialogComponent } from './book-desk-dialog/book-desk-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import {OngoingBookingsComponent} from "./ongoing-bookings/ongoing-bookings.comp
     MyBookingsComponent,
     FloorMapComponent,
     UserPageComponent,
-    OngoingBookingsComponent
+    OngoingBookingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,11 +60,12 @@ import {OngoingBookingsComponent} from "./ongoing-bookings/ongoing-bookings.comp
     MatTabGroup,
     MatTab,
     MatTabLabel,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
-  exports: [
-    MyBookingsComponent
-  ]
+  exports: [MyBookingsComponent],
 })
 export class AppModule {}
