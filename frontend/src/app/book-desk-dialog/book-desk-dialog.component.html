@@ -1,0 +1,51 @@
+<!--<h2 mat-dialog-title>Dialog with elements</h2>-->
+<!--<mat-dialog-content>This dialog showcases the title, close, content and actions elements.</mat-dialog-content>-->
+<!--<mat-dialog-actions>-->
+<!--  <button mat-button mat-dialog-close>Close</button>-->
+<!--</mat-dialog-actions>-->
+
+<div class="modal">
+  <h2>Create a booking for <b>{{data}}</b> </h2>
+  <hr>
+  <div class="middle-div">
+    <mat-card class="alte-rezervari">
+      <mat-card-header>Other bookings</mat-card-header>
+      <mat-card-content>
+
+      </mat-card-content>
+    </mat-card>
+    <div class="time-selection">
+      <p>Select starting time:</p>
+      <input type="time" id="start" min="09:00" max="18:00" required />
+      <br>
+      <br>
+      <p>Select ending time:</p>
+      <input type="time" id="end" min="09:00" max="18:00" required />
+    </div>
+  </div>
+  <br>
+<!--  <div *ngFor="let person of people">-->
+<!--    <mat-checkbox [checked]="selectedPeople.includes(person)" (change)="toggleSelection(person)">-->
+<!--      {{ person }}-->
+<!--    </mat-checkbox>-->
+<!--  </div>-->
+  <mat-card class="participanti-meeting">
+    <mat-card-header>
+      Add people to the meeting
+    </mat-card-header>
+    <br>
+    <br>
+    <mat-card-content *ngFor="let person of people">
+      <mat-checkbox [checked]="selectedPeople.includes(person)" (change)="toggleSelection(person)">
+        {{ person }}
+      </mat-checkbox>
+    </mat-card-content>
+  </mat-card>
+<br>
+  <mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button color="primary" (click)="onConfirm()">Confirm</button>
+  </mat-dialog-actions>
+
+</div>
+

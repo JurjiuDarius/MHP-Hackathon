@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { MatCard, MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,6 +24,8 @@ import {
   MatDatepickerToggle,
 } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import {MatSelectModule} from "@angular/material/select";
+import {BookDeskDialogComponent} from "./book-desk-dialog/book-desk-dialog.component";
 
 @NgModule({
   declarations: [
@@ -50,6 +52,9 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatDatepicker,
     MatDatepickerInput,
     MatMomentDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
