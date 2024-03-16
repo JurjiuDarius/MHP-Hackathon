@@ -4,6 +4,7 @@ import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { StatisticsService } from '../service/statistics.service';
 import { DatePipe } from '@angular/common';
+import {UserService} from "../service/user.service";
 
 @Component({
   selector: 'app-admin-page',
@@ -16,12 +17,25 @@ export class AdminPageComponent {
   selected: Date | null;
   percentage: number = 100;
 
+  users:number=0;
+
   constructor(
     private statisticsService: StatisticsService,
-    private datepipe: DatePipe
+    private datepipe: DatePipe,
+    private userService: UserService,
   ) {
     this.selected = new Date();
     this.updatePercentage();
+
+    this.userService.getUsers().subscribe({
+      next: (response) => {
+        this.users = response.length;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+
   }
   // Function to handle date selection
   onDateSelected(date: Date | null): void {
