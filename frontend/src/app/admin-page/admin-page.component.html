@@ -1,44 +1,8 @@
-<!-- admin-page.component.html -->
-
-<span>Admin Dashboard</span>
-
-
-<div class="container">
-  <!-- Statistics Cards -->
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Statistics</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="statistics">
-        <!-- Add your statistics here -->
-        <div class="statistic">
-          <div class="label">Total Users</div>
-          <div class="value">100</div>
-        </div>
-        <div class="statistic">
-          <div class="label">Total Bookings</div>
-          <div class="value">500</div>
-        </div>
-        <!-- Add more statistics as needed -->
-      </div>
-    </mat-card-content>
+<div class="calendar">
+  <mat-card class="demo-inline-calendar-card">
+    <mat-calendar [selected]="selected" (selectedChange)="onDateSelected($event)" [dateClass]="dateClass"></mat-calendar>
   </mat-card>
 
-  <!-- Charts -->
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Charts</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <!-- Add your charts here -->
-      <div class="chart">
-        <!-- Add chart components or embed external chart libraries -->
-        <p>Chart 1</p>
-      </div>
-      <div class="chart">
-        <p>Chart 2</p>
-      </div>
-    </mat-card-content>
-  </mat-card>
 </div>
+
+<app-piechart></app-piechart>

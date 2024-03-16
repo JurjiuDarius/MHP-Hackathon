@@ -10,44 +10,11 @@
 <section class="harta">
   <img class="locuri_background" src="assets/HartaLocuriBackground.jpg">
 
-  <button *ngFor="let buttonId of buttonIds" [id]="buttonId" class="loc-liber" mat-mini-fab (click)="openDialog(buttonId)">
-    <mat-icon>add</mat-icon>
+  <button *ngFor="let buttonId of buttonIds" [id]="buttonId" [class.loc-liber]="occupationDict[buttonId] === 0" [class.loc-semi-ocupat]="occupationDict[buttonId] === 1" [class.loc-ocupat]="occupationDict[buttonId] === 2" mat-mini-fab (click)="openDialog(buttonId)">
+    <mat-icon *ngIf="occupationDict[buttonId] === 0">add</mat-icon>
+    <mat-icon *ngIf="occupationDict[buttonId] === 1">remove</mat-icon>
+    <mat-icon *ngIf="occupationDict[buttonId] === 2">clear</mat-icon>
   </button>
 
-    <div class="Pit-Lane">
-      <button class="loc-liber" mat-mini-fab (click)="openDialog('Pit-Lane')">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
-
-    <div class="Dry-Lane">
-      <button class="loc-liber" mat-mini-fab (click)="openDialog('Dry-Lane')">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
-
-    <div class="JockerLap">
-      <button class="loc-liber" mat-mini-fab (click)="openDialog('JockerLap')">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
-
-    <div class="Quick8">
-      <button class="loc-liber" mat-mini-fab (click)="openDialog('Quick8')">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
-
-    <div class="PolePosition" >
-      <button class="loc-ocupat" mat-mini-fab (click)="openDialog('PolePosition')">
-        <mat-icon>clear</mat-icon>
-      </button>
-    </div>
-
-    <div class="Cockpit">
-      <button class="loc-semi-ocupat" mat-mini-fab (click)="openDialog('Cockpit')">
-        <mat-icon>remove</mat-icon>
-      </button>
-    </div>
 
 </section>

@@ -19,14 +19,12 @@ import { MatCheckbox } from '@angular/material/checkbox';
 import { DatePipe, NgForOf, NgIf } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { User } from '../models/user';
-import { UserService } from '../service/user.service';
 import { BookingService } from '../service/booking.service';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Bookable } from '../models/bookable';
+import { UserService } from '../service/user.service';
 import { BookableService } from '../service/bookable.service';
-import {BehaviorSubject, Observable} from "rxjs";
-import {Bookable} from "../models/bookable";
-
 @Component({
   selector: 'app-book-desk-dialog',
   standalone: true,
@@ -85,7 +83,7 @@ export class BookDeskDialogComponent {
       error: (error) => {
         console.log(error);
       },
-    })
+    });
     this.userService.getUsers().subscribe({
       next: (response) => {
         this.users = response;

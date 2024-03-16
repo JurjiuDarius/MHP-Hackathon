@@ -18,11 +18,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+
+import { PiechartComponent } from './piechart/piechart.component';
+import { Component, ViewChild } from '@angular/core';
 import {
+  MatCalendar,
   MatDatepicker,
   MatDatepickerInput,
   MatDatepickerToggle,
 } from '@angular/material/datepicker';
+
+import { NgApexchartsModule } from 'ng-apexcharts';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { UserPageComponent } from './user-page/user-page.component';
 import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
@@ -32,6 +38,7 @@ import { BookDeskDialogComponent } from './book-desk-dialog/book-desk-dialog.com
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTable, MatTableModule} from "@angular/material/table";
 import {AdminPageComponent} from "./admin-page/admin-page.component";
+import * as ApexCharts from 'apexcharts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +47,8 @@ import {AdminPageComponent} from "./admin-page/admin-page.component";
     FloorMapComponent,
     UserPageComponent,
     OngoingBookingsComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    PiechartComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +81,7 @@ import {AdminPageComponent} from "./admin-page/admin-page.component";
     MatHeaderRow,
     MatRow,
     MatTableModule,
+    MatCalendar,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
