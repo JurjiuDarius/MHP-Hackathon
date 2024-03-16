@@ -57,4 +57,13 @@ export class AppComponent {
     this.router.navigate(['/new-booking']);
   }
 
+  navigateToAdmin(): void {
+    this.router.navigate(['/admin']);
+  }
+
+  isAdmin(): boolean {
+    const currentRole = localStorage.getItem('currentRole');
+    return currentRole === 'admin';
+  }
+
 }

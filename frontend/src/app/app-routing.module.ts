@@ -4,6 +4,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { MyBookingsComponent } from './my-bookings/my-bookings.component';
 import { FloorMapComponent } from './floor-map/floor-map.component';
 import {UserPageComponent} from "./user-page/user-page.component";
+import {AdminPageComponent} from "./admin-page/admin-page.component";
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
   // { path: 'my-bookings', component: MyBookingsComponent },
   { path: 'new-booking', component: FloorMapComponent },
   { path: 'user-profile', component: UserPageComponent },
+  { path: 'admin', component: AdminPageComponent },
 ];
 
 @NgModule({
