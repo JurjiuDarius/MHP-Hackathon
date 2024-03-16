@@ -10,7 +10,7 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
-  { path: 'my-bookings', component: MyBookingsComponent },
+  // { path: 'my-bookings', component: MyBookingsComponent },
   { path: 'new-booking', component: FloorMapComponent },
   { path: 'user-profile', component: UserPageComponent },
 ];
