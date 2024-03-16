@@ -6,18 +6,19 @@
   <div class="middle-div">
     <mat-card class="alte-rezervari">
       <mat-card-header>Other bookings</mat-card-header>
-
-      <mat-card-content *ngIf="bookings && bookings.length === 0">
-        <mat-card class="no-users-card">No bookings found</mat-card>
-      </mat-card-content>
-      <mat-card-content *ngFor="let booking of bookings">
-        <ng-container *ngIf="booking.bookable_id === data.bookable_id">
-          <mat-card>
-            Start: {{ booking.start }} End:
-            {{ booking.end }}
-          </mat-card>
-        </ng-container>
-      </mat-card-content>
+      <div class="list">
+        <mat-card-content *ngIf="bookings && bookings.length === 0">
+          <mat-card class="no-users-card">No bookings found</mat-card>
+        </mat-card-content>
+        <mat-card-content *ngFor="let booking of bookings">
+          <ng-container *ngIf="booking.bookable_id === data.bookable_id">
+            <mat-card>
+              Start: {{ booking.start }} End:
+              {{ booking.end }}
+            </mat-card>
+          </ng-container>
+        </mat-card-content>
+      </div>
     </mat-card>
     <div class="time-selection">
       <p>Select starting time:</p>
@@ -45,17 +46,19 @@
   <br />
   <mat-card class="participanti-meeting">
     <mat-card-header> Add people to the meeting </mat-card-header>
-    <mat-card-content *ngIf="users && users.length === 0">
-      <mat-card class="no-users-card">No users found</mat-card>
-    </mat-card-content>
-    <mat-card-content *ngFor="let person of users">
-      <mat-checkbox
-        [checked]="selectedPeople.includes(person.email)"
-        (change)="toggleSelection(person.username)"
-      >
-        {{ person.email }}
-      </mat-checkbox>
-    </mat-card-content>
+    <div class="list">
+      <mat-card-content *ngIf="users && users.length === 0">
+        <mat-card class="no-users-card">No users found</mat-card>
+      </mat-card-content>
+      <mat-card-content *ngFor="let person of users">
+        <mat-checkbox
+          [checked]="selectedPeople.includes(person.username)"
+          (change)="toggleSelection(person.username)"
+        >
+          {{ person }}
+        </mat-checkbox>
+      </mat-card-content>
+    </div>
   </mat-card>
   <br />
   <mat-dialog-actions>
