@@ -34,5 +34,16 @@ export class OngoingBookingsComponent {
       },
     });
   }
+
+  getCurrentTime(): Date {
+    return new Date(); // Return the current time
+  }
+
+  isOpenBooking(booking: Booking): boolean {
+    const currentTime = this.getCurrentTime();
+    const bookingStartTime = new Date(booking.date + ' ' + booking.start);
+    const bookingEndTime = new Date(booking.date + ' ' + booking.end);
+    return bookingStartTime <= currentTime && bookingEndTime >= currentTime;
+  }
   goToDetails(bookingID: number) {}
 }

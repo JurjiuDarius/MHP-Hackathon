@@ -20,5 +20,13 @@ export class MyBookingsComponent {
     });
   }
 
+  getCurrentDate(): Date {
+    return new Date();
+  }
+
+  isPastDate(date: String): boolean {
+    return date < this.getCurrentDate().toString();
+  }
+
   goToDetails(bookingID: number) {}
 }

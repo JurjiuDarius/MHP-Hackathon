@@ -4,21 +4,23 @@
 </div>
 
 <ng-container *ngFor="let booking of bookings">
-  <mat-card class="booking-card">
-    <mat-card-content>
-      <div class="booking-info">
-        <div class="booking-date">
-          <span class="material-symbols-outlined">Event</span>
-          {{ booking.date | date : "mediumDate" }}
+  <ng-container *ngIf="isOpenBooking(booking)">
+    <mat-card class="booking-card">
+      <mat-card-content>
+        <div class="booking-info">
+          <div class="booking-date">
+            <span class="material-symbols-outlined">Event</span>
+            {{ booking.date | date : "mediumDate" }}
+          </div>
+          <div class="booking-time">
+            <span class="material-symbols-outlined">Schedule</span>
+            {{ booking.start }} - {{ booking.end }}
+          </div>
         </div>
-        <div class="booking-time">
-          <span class="material-symbols-outlined">Schedule</span>
-          {{ booking.start }} - {{ booking.end }}
-        </div>
-      </div>
-      <button mat-icon-button color="warn" (click)="deleteBooking(booking.id)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </mat-card-content>
-  </mat-card>
+        <button mat-icon-button color="warn" (click)="deleteBooking(booking.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
 </ng-container>
