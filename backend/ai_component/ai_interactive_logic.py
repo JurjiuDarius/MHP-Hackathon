@@ -48,7 +48,7 @@ class ai_controller:
         self.meeting_rooms_11_13 = tf.keras.models.load_model('ai_component/models/meeting-rooms-11-13-0.57.keras')
         self.meeting_rooms_13_15 = tf.keras.models.load_model('ai_component/models/meeting-rooms-13-15-0.62.keras')
         self.meeting_rooms_15_17 = tf.keras.models.load_model('ai_component/models/meeting-rooms-15-17-0.56.keras')
-        self.presences = tf.keras.models.load_model('ai_component/models/presences-0-00.keras')
+        self.presences = tf.keras.models.load_model('ai_component/models/presences-0.00.keras')
 
     def get_desk_prediction_morning(self, desk, day):
         deskname = desk + " " + str(get_day_of_week_numeric(day))
