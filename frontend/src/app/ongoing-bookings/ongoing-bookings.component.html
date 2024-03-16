@@ -24,13 +24,15 @@
 <!--    </mat-card>-->
 <!--  </ng-container>-->
 <!--</ng-container>-->
-<br>
+<br />
 <ng-container *ngIf="bookings">
   <mat-table [dataSource]="bookings" class="mat-elevation-z8">
     <!-- Date Column -->
     <ng-container matColumnDef="date">
       <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
-      <mat-cell *matCellDef="let booking"> {{ booking.date | date : "mediumDate" }} </mat-cell>
+      <mat-cell *matCellDef="let booking">
+        {{ booking.date | date : "mediumDate" }}
+      </mat-cell>
     </ng-container>
 
     <!-- Start Time Column -->
@@ -47,11 +49,20 @@
 
     <ng-container matColumnDef="delete">
       <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
-      <mat-cell *matCellDef="let booking" (click)="deleteBooking(booking)"> <mat-icon >delete</mat-icon> </mat-cell>
+      <mat-cell *matCellDef="let booking" (click)="deleteBooking(booking.id)">
+        <mat-icon>delete</mat-icon>
+      </mat-cell>
     </ng-container>
 
     <!-- Table Rows -->
-    <mat-header-row *matHeaderRowDef="['date', 'startTime', 'endTime', 'delete']"></mat-header-row>
-    <mat-row *matRowDef="let booking; columns: ['date', 'startTime', 'endTime', 'delete']"></mat-row>
+    <mat-header-row
+      *matHeaderRowDef="['date', 'startTime', 'endTime', 'delete']"
+    ></mat-header-row>
+    <mat-row
+      *matRowDef="
+        let booking;
+        columns: ['date', 'startTime', 'endTime', 'delete']
+      "
+    ></mat-row>
   </mat-table>
 </ng-container>

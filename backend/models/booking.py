@@ -23,6 +23,7 @@ class Booking(db.Model):
 
     def serialize(self):
         return {
+            "id": self.id,
             "user_id": self.user_id,
             "bookable_id": self.bookable_id,
             "date": json_serial_date(self.date),

@@ -70,3 +70,9 @@ def filter_bookings_by_date():
     booking_date = request.json["date"]
     bookings = booking_service.filter_bookings_by_date(booking_date)
     return jsonify(bookings), 200
+
+
+@booking_blueprint.route("/user/<int:user_id>", methods=["GET"])
+def get_bookings_for_user(user_id):
+    bookings, status = booking_service.get_bookings_for_user(user_id)
+    return jsonify(bookings), status

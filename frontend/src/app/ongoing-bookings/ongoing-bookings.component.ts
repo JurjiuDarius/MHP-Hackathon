@@ -1,18 +1,20 @@
 import { Component } from '@angular/core';
-import {Booking} from "../models/booking";
-import {BookingService} from "../service/booking.service";
+import { Booking } from '../models/booking';
+import { BookingService } from '../service/booking.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-ongoing-bookings',
   templateUrl: './ongoing-bookings.component.html',
-  styleUrl: './ongoing-bookings.component.scss'
+  styleUrl: './ongoing-bookings.component.scss',
 })
 export class OngoingBookingsComponent {
-
   public bookings: Booking[] = [];
+  private userId: number = 0;
 
   constructor(private bookingService: BookingService) {
-    this.bookingService.getBookings().subscribe({
+    this.userId = parseInt(localStorage.getItem('currentUserId')!);
+    this.bookingService.getBookingsForUser(this.userId).subscribe({
       next: (response) => {
         this.bookings = response;
       },
@@ -45,5 +47,4 @@ export class OngoingBookingsComponent {
     const bookingEndTime = new Date(booking.date + ' ' + booking.end);
     return bookingStartTime <= currentTime && bookingEndTime >= currentTime;
   }
-  goToDetails(bookingID: number) {}
 }
