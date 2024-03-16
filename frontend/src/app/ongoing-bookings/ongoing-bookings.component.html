@@ -35,7 +35,12 @@
       </mat-cell>
     </ng-container>
 
-    <!-- Start Time Column -->
+    <!-- Location Column -->
+    <ng-container matColumnDef="location">
+      <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+      <mat-cell *matCellDef="let booking"> {{ booking.bookable_id }} </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="startTime">
       <mat-header-cell *matHeaderCellDef> Start Time </mat-header-cell>
       <mat-cell *matCellDef="let booking"> {{ booking.start }} </mat-cell>
@@ -56,12 +61,12 @@
 
     <!-- Table Rows -->
     <mat-header-row
-      *matHeaderRowDef="['date', 'startTime', 'endTime', 'delete']"
+      *matHeaderRowDef="['date', 'location', 'startTime', 'endTime', 'delete']"
     ></mat-header-row>
     <mat-row
       *matRowDef="
         let booking;
-        columns: ['date', 'startTime', 'endTime', 'delete']
+        columns: ['date', 'location', 'startTime', 'endTime', 'delete']
       "
     ></mat-row>
   </mat-table>
