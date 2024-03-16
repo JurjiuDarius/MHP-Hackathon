@@ -18,12 +18,19 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+
+import { PiechartComponent } from './piechart/piechart.component.ts';
+import { Component, ViewChild } from "@angular/core";
 import {
   MatDatepicker,
   MatDatepickerInput,
   MatDatepickerToggle,
 } from '@angular/material/datepicker';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
+
+
+import { NgApexchartsModule } from "ng-apexcharts";
+import { MixedChartComponent } from "./mixedchart/mixedchart.component";
 
 @NgModule({
   declarations: [
@@ -31,6 +38,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     LoginComponent,
     MyBookingsComponent,
     FloorMapComponent,
+    PiechartComponent,
+    MixedChartComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +59,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatDatepicker,
     MatDatepickerInput,
     MatMomentDateModule,
+    NgApexchartsModule
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
