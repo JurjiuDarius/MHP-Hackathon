@@ -52,6 +52,8 @@ export class BookDeskDialogComponent {
   public users: User[] = [];
   public bookings: Booking[] = [];
   public capacity: number = 0;
+  public availabilityMorning: number | null = null;
+  public availabilityEvening: number | null = null;
   selectedPeople: string[] = [];
   startTime: string = '';
   endTime: string = '';
@@ -65,6 +67,18 @@ export class BookDeskDialogComponent {
     private bookableService: BookableService,
     private snackbar: MatSnackBar
   ) {
+    this.bookableService
+      .getAvailabilityForBookable(data.bookable_id, data.date)
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          this.availabilityMorning = response[0] * 100;
+          this.availabilityEvening = response[1] * 100;
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
     this.bookableService.getCapacityForBookable(data.bookable_id).subscribe({
       next: (response) => {
         console.log(response);

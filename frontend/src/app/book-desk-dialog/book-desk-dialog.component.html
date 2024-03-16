@@ -3,9 +3,13 @@
     Create a booking for <b>{{ data.bookable_id }}</b>
   </h2>
   <hr />
-  <mat-card>Probability to be occupied in the first half of the day:</mat-card>
-  <mat-card
+  <mat-card *ngIf="availabilityMorning"
+    >Probability to be occupied in the first half of the day:
+    {{ availabilityMorning }}%</mat-card
+  >
+  <mat-card *ngIf="availabilityEvening"
     >Probability to be occupied in the second half of the day:
+    {{ availabilityEvening }}%
   </mat-card>
   <div class="middle-div">
     <mat-card class="alte-rezervari">

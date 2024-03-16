@@ -14,4 +14,13 @@ export class BookableService {
   getCapacityForBookable(bookableId: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/bookables/${bookableId}/capacity`);
   }
+  getAvailabilityForBookable(
+    bookableId: string,
+    date: string
+  ): Observable<any> {
+    return this.http.post(`${this.apiUrl}/bookables/availability`, {
+      bookableId,
+      date,
+    });
+  }
 }
