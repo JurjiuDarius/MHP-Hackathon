@@ -4,6 +4,7 @@
   <div class="middle-div">
     <mat-card class="alte-rezervari">
       <mat-card-header>Other bookings</mat-card-header>
+      <div class="list">
       <mat-card-content *ngIf="bookings && bookings.length === 0">
         <mat-card class="no-users-card">No bookings found</mat-card>
       </mat-card-content>
@@ -14,7 +15,7 @@
           </mat-checkbox>
         </ng-container>
       </mat-card-content>
-
+  </div>
     </mat-card>
     <div class="time-selection">
       <p>Select starting time:</p>
@@ -28,6 +29,7 @@
     <mat-card-header>
       Add people to the meeting
     </mat-card-header>
+    <div class="list">
     <mat-card-content *ngIf="users && users.length === 0">
       <mat-card class="no-users-card">No users found</mat-card>
     </mat-card-content>
@@ -36,6 +38,7 @@
         {{ person }}
       </mat-checkbox>
     </mat-card-content>
+    </div>
   </mat-card>
 <br>
   <mat-dialog-actions>
