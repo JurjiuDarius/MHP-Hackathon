@@ -4,14 +4,18 @@ import {provideNativeDateAdapter} from "@angular/material/core";
 import {MatDialog} from "@angular/material/dialog";
 import {BookDeskDialogComponent} from "../book-desk-dialog/book-desk-dialog.component";
 import {Booking} from "../models/booking";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-floor-map',
   templateUrl: './floor-map.component.html',
-  providers: [provideNativeDateAdapter()],
+  providers: [provideNativeDateAdapter(), DatePipe],
   styleUrls: ['./floor-map.component.scss']
 })
 export class FloorMapComponent {
+  selectedDate: string='';
+  // @ts-ignore
+  booking: Booking;
   buttonIds: string[] = [
     'CLUJ_5_beta_1_1',
     'CLUJ_5_beta_1_2',
@@ -150,25 +154,47 @@ export class FloorMapComponent {
     'CLUJ_5_beta_33_4',
   ];
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private datePipe: DatePipe) {}
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     if (view === 'month') {
       const date = cellDate.getDate();
 
-      if (date === 1 || date === 20)
-        return 'fully-booked-date';
-
-      if (date % 5 ===0)
-        return 'partially-booked-date';
+      // if (date === 1 || date === 20)
+      //   return 'fully-booked-date';
+      //
+      // if (date % 5 ===0)
+      //   return 'partially-booked-date';
     }
     return '';
   };
 
-  openDialog(id: string) {
-    this.dialog.open(BookDeskDialogComponent, {
-      data: id,
-    });
+  getFormattedDate(): string {
+    if (this.selectedDate) {
+      return this.datePipe.transform(this.selectedDate, 'MM/dd/yyyy') || '';
+    }
+    return '';
   }
 
+  currentUserId = localStorage.getItem('currentUserId') || '';
+
+  openDialog(id: string) {
+    this.selectedDate=this.getFormattedDate();
+    this.booking = {
+      id: 0,
+      user_id: this.currentUserId,
+      bookable_id: id,
+      date: this.selectedDate,
+      start: '',
+      end: ''
+    };
+
+    console.log("SELECTED DATE:")
+    console.log(this.selectedDate)
+    console.log(this.booking)
+
+    this.dialog.open(BookDeskDialogComponent, {
+      data: this.booking
+    });
+  }
 }
