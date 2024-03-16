@@ -5,10 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { MatCard, MatCardModule } from '@angular/material/card';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -24,13 +24,29 @@ import {
   MatDatepickerToggle,
 } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-
+import { UserPageComponent } from './user-page/user-page.component';
+import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
+import { OngoingBookingsComponent } from './ongoing-bookings/ongoing-bookings.component';
+import { MatSelectModule } from '@angular/material/select';
+import { BookDeskDialogComponent } from './book-desk-dialog/book-desk-dialog.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {
+  MatCell,
+  MatHeaderCell,
+  MatHeaderRow,
+  MatRow,
+  MatTable,
+  MatTableModule,
+} from '@angular/material/table';
+import { TokenInterceptor } from './service/http-interceptor';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MyBookingsComponent,
     FloorMapComponent,
+    UserPageComponent,
+    OngoingBookingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,8 +66,29 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatDatepicker,
     MatDatepickerInput,
     MatMomentDateModule,
+    MatTabGroup,
+    MatTab,
+    MatTabLabel,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    FormsModule,
+    MatSnackBarModule,
+    MatHeaderCell,
+    MatCell,
+    MatHeaderRow,
+    MatRow,
+    MatTableModule,
   ],
-  providers: [provideAnimationsAsync()],
+  providers: [
+    provideAnimationsAsync(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
+  exports: [MyBookingsComponent],
 })
 export class AppModule {}

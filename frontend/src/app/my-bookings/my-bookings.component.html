@@ -1,23 +1,64 @@
-<div><i class="material-icons">info</i> Click a booking to view details</div>
-<div *ngIf="bookings && bookings.length === 0">
-  <mat-card class="no-bookings-card">No bookings found</mat-card>
-</div>
+<!--<div><i class="material-icons">info</i> Click a booking to view details</div>-->
+<!--<div *ngIf="bookings && bookings.length === 0">-->
+<!--  <mat-card class="no-bookings-card">No bookings found</mat-card>-->
+<!--</div>-->
 
-<ng-container *ngFor="let booking of bookings">
-  <mat-card (click)="goToDetails(booking.id)" class="booking-card">
-    <mat-card-content>
-      <div class="booking-info">
-        <div class="booking-date">
-          <span class="material-symbols-outlined">Event</span>
+<!--<ng-container *ngFor="let booking of bookings">-->
+<!--  <ng-container *ngIf="isPastDate(booking.date)">-->
+<!--    <mat-card class="booking-card">-->
+<!--      <mat-card-content>-->
+<!--        <div class="booking-info">-->
+<!--          <div class="booking-date">-->
+<!--            <span class="material-symbols-outlined">Event</span>-->
+<!--            {{ booking.date | date : "mediumDate" }}-->
+<!--          </div>-->
+<!--          <div class="booking-time">-->
+<!--            <span class="material-symbols-outlined">Schedule</span>-->
+<!--            {{ booking.start }} - {{ booking.end }}-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </mat-card-content>-->
+<!--    </mat-card>-->
+<!--  </ng-container>-->
+<!--</ng-container>-->
+<br />
+<ng-container *ngIf="bookings">
+  <mat-table [dataSource]="bookings" class="mat-elevation-z8">
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let booking">
+        {{ booking.date | date : "mediumDate" }}
+      </mat-cell>
+    </ng-container>
 
-          {{ booking.date | date : "mediumDate" }}
-        </div>
-        <div class="booking-time">
-          <span class="material-symbols-outlined">Schedule</span>
-          {{ booking.start }} -
-          {{ booking.end }}
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
+    <!-- Location Column -->
+    <ng-container matColumnDef="location">
+      <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+      <mat-cell *matCellDef="let booking"> {{ booking.bookable_id }} </mat-cell>
+    </ng-container>
+
+    <!-- Start Time Column -->
+    <ng-container matColumnDef="startTime">
+      <mat-header-cell *matHeaderCellDef> Start Time </mat-header-cell>
+      <mat-cell *matCellDef="let booking"> {{ booking.start }} </mat-cell>
+    </ng-container>
+
+    <!-- End Time Column -->
+    <ng-container matColumnDef="endTime">
+      <mat-header-cell *matHeaderCellDef> End Time </mat-header-cell>
+      <mat-cell *matCellDef="let booking"> {{ booking.end }} </mat-cell>
+    </ng-container>
+
+    <!-- Table Rows -->
+    <mat-header-row
+      *matHeaderRowDef="['date', 'location', 'startTime', 'endTime']"
+    ></mat-header-row>
+    <mat-row
+      *matRowDef="
+        let booking;
+        columns: ['date', 'location', 'startTime', 'endTime']
+      "
+    ></mat-row>
+  </mat-table>
 </ng-container>

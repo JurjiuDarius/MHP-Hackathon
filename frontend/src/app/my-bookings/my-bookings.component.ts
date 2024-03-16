@@ -8,9 +8,11 @@ import { BookingService } from '../service/booking.service';
 })
 export class MyBookingsComponent {
   public bookings: Booking[] = [];
+  private userId: number = 0;
 
   constructor(private bookingService: BookingService) {
-    this.bookingService.getBookings().subscribe({
+    this.userId = parseInt(localStorage.getItem('currentUserId')!);
+    this.bookingService.getPastBookingsForUser(this.userId).subscribe({
       next: (response) => {
         this.bookings = response;
       },
@@ -20,17 +22,13 @@ export class MyBookingsComponent {
     });
   }
 
-  deleteBooking(bookingID: number) {
-    this.bookingService.deleteBooking(bookingID).subscribe({
-      next: (response) => {
-        this.bookings = this.bookings.filter(
-          (booking) => booking.id !== bookingID
-        );
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+  getCurrentDate(): Date {
+    return new Date();
   }
+
+  isPastDate(date: String): boolean {
+    return date < this.getCurrentDate().toString();
+  }
+
   goToDetails(bookingID: number) {}
 }
