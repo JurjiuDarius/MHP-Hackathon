@@ -102,6 +102,11 @@ export class BookDeskDialogComponent {
         console.log(error);
       },
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      window.location.reload(); // Refresh the page
+    });
   }
 
   toggleSelection(person: string) {
@@ -115,6 +120,7 @@ export class BookDeskDialogComponent {
   onCancel(): void {
     this.dialogRef.close();
   }
+
 
   onConfirm(): void {
     console.log(this.selectedPeople);

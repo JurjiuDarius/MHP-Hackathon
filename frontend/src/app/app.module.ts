@@ -30,6 +30,7 @@ import { OngoingBookingsComponent } from './ongoing-bookings/ongoing-bookings.co
 import { MatSelectModule } from '@angular/material/select';
 import { BookDeskDialogComponent } from './book-desk-dialog/book-desk-dialog.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTable, MatTableModule} from "@angular/material/table";
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +66,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSelectModule,
     FormsModule,
     MatSnackBarModule,
+    MatHeaderCell,
+    MatCell,
+    MatHeaderRow,
+    MatRow,
+    MatTableModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
