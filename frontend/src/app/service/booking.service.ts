@@ -26,6 +26,6 @@ export class BookingService {
     return this.http.delete(`${this.apiUrl}/bookings/${bookingID}`);
   }
   getBookingsByDate(date: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/bookings/date/${date}`);
+    return this.http.post(`${this.apiUrl}/bookings/filter-by-date/`, { date });
   }
 }

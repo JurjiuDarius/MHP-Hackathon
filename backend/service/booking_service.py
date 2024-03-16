@@ -36,7 +36,8 @@ def delete_booking(booking_id):
 
 
 def filter_bookings_by_date(date):
-    return Booking.query.filter_by(date=date).all()
+    filtered_bookings = Booking.query.filter_by(date=date).all()
+    return [booking.serialize() for booking in filtered_bookings]
 
 
 def get_all_bookings():
