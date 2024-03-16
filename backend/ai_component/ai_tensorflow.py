@@ -7,14 +7,13 @@ import tensorflow as tf
 import numpy as np
 
 def get_desk_number(desk):
-    if desk == "CLUJ_5_beta_18.5":
+    if desk == "CLUJ_5_beta_18_5":
         return 134
-    if desk == "CLUJ_5_beta_19.5":
+    if desk == "CLUJ_5_beta_19_5":
         return 133
-    if desk == "CLUJ_5_beta_19.6":
+    if desk == "CLUJ_5_beta_19_6":
         return 132
-    desk_number = desk.split("_")[3]
-    desk_number = (int(desk_number.split(".")[0]) - 1) * 4 + (int(desk_number.split(".")[1]) - 1)
+    desk_number = (int(desk.split("_")[3]) - 1) * 4 + (int(desk.split("_")[4]) - 1)
     return desk_number
 
 
@@ -73,7 +72,7 @@ model = tf.keras.Sequential([
 
 model.compile(optimizer='sgd', loss='binary_crossentropy', metrics=['accuracy'])
 
-model.fit(X_train, y_train, epochs=25, batch_size=1)
+model.fit(X_train, y_train, epochs=500, batch_size=1)
 
 loss, accuracy = model.evaluate(X_test, y_test)
 print("Test Accuracy:", accuracy)
@@ -100,7 +99,7 @@ model.save(f"C:/Users/Mihai/PycharmProjects/ai/mhp hackathon/backend/ai_componen
 y = label_encoder.fit_transform(workspace_data[:, 4]).astype(int)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=7)
 
-model.fit(X_train, y_train, epochs=50, batch_size=10)
+model.fit(X_train, y_train, epochs=500, batch_size=10)
 
 loss, accuracy = model.evaluate(X_test, y_test)
 print("Test Accuracy:", accuracy)

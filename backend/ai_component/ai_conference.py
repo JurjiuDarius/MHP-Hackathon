@@ -64,7 +64,6 @@ model = tf.keras.Sequential([
     tf.keras.layers.Dense(24 , activation='linear'),
     tf.keras.layers.Dense(44 , activation='gelu'),
     tf.keras.layers.Dense(32 , activation='relu'),
-    tf.keras.layers.Dense(32 , activation='tanh'),
     tf.keras.layers.Dense(32 , activation='relu'),
     tf.keras.layers.Dense(16 , activation='relu'),
     tf.keras.layers.Dense(13 , activation='relu'),
