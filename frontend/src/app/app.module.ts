@@ -8,7 +8,7 @@ import { MatCard, MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -30,7 +30,15 @@ import { OngoingBookingsComponent } from './ongoing-bookings/ongoing-bookings.co
 import { MatSelectModule } from '@angular/material/select';
 import { BookDeskDialogComponent } from './book-desk-dialog/book-desk-dialog.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTable, MatTableModule} from "@angular/material/table";
+import {
+  MatCell,
+  MatHeaderCell,
+  MatHeaderRow,
+  MatRow,
+  MatTable,
+  MatTableModule,
+} from '@angular/material/table';
+import { TokenInterceptor } from './service/http-interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +80,14 @@ import {MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTable, MatTableModule} 
     MatRow,
     MatTableModule,
   ],
-  providers: [provideAnimationsAsync()],
+  providers: [
+    provideAnimationsAsync(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
   exports: [MyBookingsComponent],
 })
