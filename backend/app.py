@@ -10,16 +10,19 @@ import models
 
 
 def create_app():
+    print(os.environ)
+
     if os.path.exists("/.dockerenv"):
         load_dotenv(override=False)
     else:
-        load_dotenv(override=True)
+        load_dotenv(override=False)
 
     app = Flask(__name__)
     env_config = os.getenv("APP_SETTINGS")
     app.config.from_object(env_config)
-    print(app.config)
+    print("After dotenv.", os.environ)
 
+    print(app.config)
     db.init_app(app)
     for blueprint in blueprints:
         app.register_blueprint(blueprint)

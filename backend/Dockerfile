@@ -1,5 +1,4 @@
 FROM python:3-alpine
-
 # Set the working directory in the container to /app
 WORKDIR /app
 
@@ -13,6 +12,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
-RUN chmod +x entrypoint.sh
 # Run the application when the container launches
-CMD [ "python", "app.py" ]
+CMD ["python", "app.py"]
