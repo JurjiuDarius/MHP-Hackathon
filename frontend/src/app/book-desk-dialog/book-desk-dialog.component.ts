@@ -68,7 +68,6 @@ export class BookDeskDialogComponent {
         console.log(error);
       },
     });
-    console.log(data.date);
     this.bookingService.getBookingsByDate(data.date).subscribe({
       next: (response) => {
         this.bookings = response;
@@ -91,20 +90,10 @@ export class BookDeskDialogComponent {
     this.dialogRef.close();
   }
 
-  getFormattedDate(currentDate: Date): string {
-    if (currentDate) {
-      return this.datePipe.transform(currentDate, 'dd/MM/yyyy') || '';
-    }
-    return '';
-  }
-
   onConfirm(): void {
     console.log(this.selectedPeople);
     console.log(this.data);
-    if (this.data.date.length == 0) {
-      const currentDate = new Date();
-      this.data.date = this.getFormattedDate(currentDate);
-    }
+
     this.data.start = this.startTime;
     this.data.end = this.endTime;
     this.bookingService.createBooking(this.data).subscribe();
