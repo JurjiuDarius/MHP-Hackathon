@@ -7,15 +7,15 @@ services:
     volumes:
       - ./frontend:/app
     ports:
-      - 4200:4200
+      - "4200:4200"
     depends_on:
       - backend
 
   backend:
-    x-environment: &global_env
-      DATABASE_URI: postgresql://postgres:postgres@db:5432/MHPHackathon
-
     entrypoint: /app/entrypoint.sh
+    environment:
+      SQLALCHEMY_DATABASE_URI: postgresql://postgres:postgres@db:5432/MHPHackathon
+
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -29,6 +29,7 @@ services:
   db:
     image: postgres:latest
     environment:
+      PGUSER: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: MHPHackathon
