@@ -203,12 +203,12 @@ export class FloorMapComponent {
   currentUserId = localStorage.getItem('currentUserId') || '';
 
   openDialog(id: string) {
-    this.selectedDate = this.getFormattedDate();
+    let selectedDate = this.getFormattedDate();
     this.booking = {
       id: 0,
       user_id: this.currentUserId,
       bookable_id: id,
-      date: this.selectedDate,
+      date: selectedDate,
       start: '',
       end: '',
     };
@@ -219,8 +219,6 @@ export class FloorMapComponent {
   }
 
   onDateSelected(date: any): void {
-    this.selectedDate = this.getFormattedDate();
-    console.log(this.selectedDate);
     this.bookableService.getBookingColors(this.getFormattedDate()).subscribe({
       next: (response) => {
         for (const [key, value] of Object.entries(response)) {

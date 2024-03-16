@@ -104,10 +104,6 @@ export class BookDeskDialogComponent {
         console.log(error);
       },
     });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      window.location.reload(); // Refresh the page
-    });
   }
 
   toggleSelection(person: string) {

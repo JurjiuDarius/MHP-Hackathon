@@ -53,7 +53,10 @@
   </div>
   <br />
 
-  <mat-card class="participanti-meeting">
+  <mat-card
+    *ngIf="!data.bookable_id.startsWith('CLUJ')"
+    class="participanti-meeting"
+  >
     <mat-card-header> Add people to the meeting </mat-card-header>
     <div class="list">
       <mat-card-content *ngIf="users && users.length === 0">
