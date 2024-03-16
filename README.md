@@ -11,7 +11,7 @@ Starting the backend is quite simple: one would open a command line of their cho
 <code>>python app.py</code>
 
 Upon successful completion one shall see something among the lines of:
-![img.png](img.png)
+![assets/img.png](assets/img.png)
 
 <h4>Frontend</h4>
 
@@ -23,20 +23,20 @@ The app should start upon executing the following in the frontend folder:
 <code>>ng serve</code>
 
 After some waiting the app should be running and the command line should display:
-![img_1.png](img_1.png)
+![assets/img_1.png](assets/img_1.png)
 
 
 
 <h4>The app itself</h4>
 
 Upon connecting to the website the user should log in with the credentials provided by the one running the app as well as select their role.
-![img_2.png](img_2.png)
+![assets/img_2.png](assets/img_2.png)
 
 After logging in they will be greeted with the map of the office.
-![img_3.png](img_3.png)
+![assets/img_3.png](assets/img_3.png)
 
 Selecting the date of a booking in the top left corner and clicking on an available desk will enable them to book that seat to themselves. Clicking on a meeting room will enable them to add other participants for the given room. For both types of bookings an user can see the other bookings as well as pick a starting and ending time for his booking.
-![img_4.png](img_4.png)
+![assets/img_4.png](assets/img_4.png)
 
 <h4>AI Development</h4>
 ## Feature engineering
