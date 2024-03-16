@@ -72,7 +72,6 @@ export class BookDeskDialogComponent {
       .getAvailabilityForBookable(data.bookable_id, data.date)
       .subscribe({
         next: (response) => {
-          console.log(response);
           this.availabilityMorning = response[0] * 100;
           this.availabilityEvening = response[1] * 100;
         },
@@ -82,7 +81,6 @@ export class BookDeskDialogComponent {
       });
     this.bookableService.getCapacityForBookable(data.bookable_id).subscribe({
       next: (response) => {
-        console.log(response);
         this.capacity = response;
       },
       error: (error) => {
@@ -108,7 +106,6 @@ export class BookDeskDialogComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       window.location.reload(); // Refresh the page
     });
   }
@@ -126,7 +123,6 @@ export class BookDeskDialogComponent {
   }
 
   onConfirm(): void {
-    console.log(this.selectedPeople);
     // check if start time is before end time
 
     //check if at least half the capacity is occupied

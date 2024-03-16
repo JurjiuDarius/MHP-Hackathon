@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, SimpleChange, SimpleChanges } from '@angular/core';
+import { Input } from '@angular/core';
 import Chart from 'chart.js/auto';
 @Component({
   selector: 'app-piechart',
@@ -6,29 +7,32 @@ import Chart from 'chart.js/auto';
   styleUrl: './piechart.component.scss',
 })
 export class PiechartComponent {
+  @Input() percentage: number = 50;
   constructor() {}
   ngOnInit(): void {
     this.createChart();
   }
   public chart: any;
-
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['percentage']) {
+      this.createChart();
+    }
+  }
   createChart() {
+    if (this.chart) {
+      this.chart.destroy();
+    }
+    const remaining = 135 - this.percentage;
+
     this.chart = new Chart('MyChart', {
-      //       type: 'pie',
       type: 'doughnut',
       data: {
-        labels: ['stat 1', 'stat 2', 'stat 3', 'stat 4', 'stat 5'],
+        labels: ['At office', 'At home'],
         datasets: [
           {
-            label: 'MHP Booking Stats',
-            data: [9168.2, 1417.8, 3335.1, 1165.0, 2078.9],
-            backgroundColor: [
-              'rgb(255, 99, 132)',
-              'rgb(54, 162, 235)',
-              'rgb(255, 205, 86)',
-              'rgb(75, 192, 192)',
-              'rgb(153, 102, 255)',
-            ],
+            label: 'At home',
+            data: [this.percentage, remaining],
+            backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)'],
             hoverOffset: 4,
           },
         ],
