@@ -1,5 +1,5 @@
 <div class="login-container">
-  <mat-card class="mat-card-class">
+  <mat-card class="mat-card-class glass-login-form">
     <mat-card-title>Login</mat-card-title>
     <mat-card-content>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -40,6 +40,8 @@
             Password must be at least 8 characters long
           </mat-error>
         </mat-form-field>
+        <br>
+        <br>
         <mat-radio-group formControlName="role">
           How will you be using the app?
           <mat-radio-button name="employeeButton" value="employee"
@@ -49,24 +51,26 @@
             >Admin</mat-radio-button
           >
         </mat-radio-group>
-        <button
-          name="loginButton"
-          mat-raised-button
-          color="primary"
-          type="submit"
-          [disabled]="loginForm.invalid"
-        >
-          Login
-        </button>
-        <button
-          name="signupButton"
-          mat-raised-button
-          class="sign-up-button"
-          color="primary"
-          (click)="goToSignup()"
-        >
-          Sign Up
-        </button>
+        <div class="login-buttons">
+          <button
+            name="loginButton"
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="loginForm.invalid"
+          >
+            Login
+          </button>
+          <button
+            name="signupButton"
+            mat-raised-button
+            class="sign-up-button"
+            color="primary"
+            (click)="goToSignup()"
+          >
+            Sign Up
+          </button>
+        </div>
       </form>
       <mat-error *ngIf="this.errorMessage">
         {{ this.errorMessage }}
