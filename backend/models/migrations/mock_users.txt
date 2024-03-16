@@ -1,0 +1,4 @@
+john.doe@mhp.com 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8 johndoe employee
+admin@mhp.com 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8 admin admin
+bat.man@mhp.com 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8 batman employee
+ionut.lenghel@mhp.com 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8 ionut_lenghel employee

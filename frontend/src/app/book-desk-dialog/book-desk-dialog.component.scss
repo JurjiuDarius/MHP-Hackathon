@@ -1,44 +1,43 @@
-.modal{
+.modal {
   width: 550px;
-  height: 500px;
+  height: 550px;
 }
 
-h2{
+h2 {
   margin-left: 20px;
   margin-top: 10px;
 }
 
-.middle-div{
+.middle-div {
   display: flex;
   flex-wrap: wrap;
 }
 
-.alte-rezervari{
+.alte-rezervari {
   width: 60%;
   height: 200px;
   overflow-y: scroll;
 }
 
-.participanti-meeting{
+.participanti-meeting {
   height: 140px;
-  overflow-y: scroll;;
+  overflow-y: scroll;
 }
 
-mat-card-header{
+mat-card-header {
   position: fixed;
   background-color: white;
   z-index: 1;
 }
 
-.time-selection{
+.time-selection {
   margin-left: 10px;
 }
 
-mat-dialog-actions{
+mat-dialog-actions {
   justify-content: right;
 }
 
-.list{
+.list {
   margin-top: 30px;
 }
-

@@ -8,13 +8,15 @@ import { BookingService } from '../service/booking.service';
 })
 export class MyBookingsComponent {
   public bookings: Booking[] = [];
+  private userId: number = 0;
 
   constructor(private bookingService: BookingService) {
-    this.bookingService.getBookings().subscribe({
+    this.userId = parseInt(localStorage.getItem('currentUserId')!);
+    this.bookingService.getPastBookingsForUser(this.userId).subscribe({
       next: (response) => {
         this.bookings = response;
       },
-      error: (error) => {
+            error: (error) => {
         console.log(error);
       },
     });

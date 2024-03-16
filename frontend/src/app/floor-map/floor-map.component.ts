@@ -1,19 +1,20 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import {MatCalendarCellClassFunction} from "@angular/material/datepicker";
-import {provideNativeDateAdapter} from "@angular/material/core";
-import {MatDialog} from "@angular/material/dialog";
-import {BookDeskDialogComponent} from "../book-desk-dialog/book-desk-dialog.component";
-import {Booking} from "../models/booking";
-import {DatePipe} from "@angular/common";
+import { Component, ViewEncapsulation } from '@angular/core';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
+import { BookDeskDialogComponent } from '../book-desk-dialog/book-desk-dialog.component';
+import { Booking } from '../models/booking';
+import { DatePipe } from '@angular/common';
+import { BookableService } from '../service/bookable.service';
 
 @Component({
   selector: 'app-floor-map',
   templateUrl: './floor-map.component.html',
   providers: [provideNativeDateAdapter(), DatePipe],
-  styleUrls: ['./floor-map.component.scss']
+  styleUrls: ['./floor-map.component.scss'],
 })
 export class FloorMapComponent {
-  selectedDate: string='';
+  selectedDate: string = new Date().toISOString().split('T')[0];
   // @ts-ignore
   booking: Booking;
   buttonIds: string[] = [
@@ -152,26 +153,49 @@ export class FloorMapComponent {
     'CLUJ_5_beta_33_2',
     'CLUJ_5_beta_33_3',
     'CLUJ_5_beta_33_4',
+    'Pit-Lane',
+    'Dry-Lane',
+    'JockerLap',
+    'Quick8',
+    'PolePosition',
+    'Cockpit',
   ];
 
-  constructor(public dialog: MatDialog, private datePipe: DatePipe) {}
+  occupationDict: { [id: string]: number } = {};
+
+  constructor(
+    public dialog: MatDialog,
+    private datePipe: DatePipe,
+    private bookableService: BookableService
+  ) {
+    this.bookableService.getBookingColors(this.getFormattedDate()).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+    this.buttonIds.forEach((id) => {
+      this.occupationDict[id] = 0;
+    });
+  }
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     if (view === 'month') {
-      const date = cellDate.getDate();
+      const dayOfWeek = cellDate.getDay(); // 0 for Sunday, 1 for Monday, ...
 
-      // if (date === 1 || date === 20)
-      //   return 'fully-booked-date';
-      //
-      // if (date % 5 ===0)
-      //   return 'partially-booked-date';
+      // Check if the day is Saturday (6) or Sunday (0)
+      if (dayOfWeek === 0 || dayOfWeek === 6) {
+        return 'weekend-date';
+      }
     }
     return '';
   };
 
   getFormattedDate(): string {
     if (this.selectedDate) {
-      return this.datePipe.transform(this.selectedDate, 'dd/MM/yyyy') || '';
+      return this.datePipe.transform(this.selectedDate, 'MM/dd/yyyy') || '';
     }
     return '';
   }
@@ -179,22 +203,30 @@ export class FloorMapComponent {
   currentUserId = localStorage.getItem('currentUserId') || '';
 
   openDialog(id: string) {
-    this.selectedDate=this.getFormattedDate();
+    this.selectedDate = this.getFormattedDate();
     this.booking = {
       id: 0,
       user_id: this.currentUserId,
       bookable_id: id,
       date: this.selectedDate,
       start: '',
-      end: ''
+      end: '',
     };
 
-    console.log("SELECTED DATE:")
-    console.log(this.selectedDate)
-    console.log(this.booking)
-
     this.dialog.open(BookDeskDialogComponent, {
-      data: this.booking
+      data: this.booking,
+    });
+  }
+
+  onDateSelected(date: any): void {
+    this.selectedDate = this.getFormattedDate();
+    this.bookableService.getBookingColors(this.getFormattedDate()).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
     });
   }
 }

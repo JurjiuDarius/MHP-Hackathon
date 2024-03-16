@@ -11,5 +11,7 @@ class Desk(Bookable):
         "polymorphic_identity": "desk",
     }
 
-    def __init__(self, number_available):
-        self.number_available = number_available
+    def __init__(self, id, map_id):
+        super().__init__(map_id)
+        self.id = id
+        self.map_id = map_id

@@ -1,0 +1,11 @@
+<div class="calendar">
+  <mat-card class="demo-inline-calendar-card">
+    <mat-calendar
+      [selected]="selected"
+      (selectedChange)="onDateSelected($event)"
+      [dateClass]="dateClass"
+    ></mat-calendar>
+  </mat-card>
+</div>
+
+<app-piechart [percentage]="percentage"></app-piechart>

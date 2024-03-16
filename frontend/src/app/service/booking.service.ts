@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Booking } from '../models/booking';
 import { environment } from '../environments/development';
+import { Bookable } from '../models/bookable';
 @Injectable({
   providedIn: 'root',
 })
@@ -24,5 +25,14 @@ export class BookingService {
 
   deleteBooking(bookingID: number) {
     return this.http.delete(`${this.apiUrl}/bookings/${bookingID}`);
+  }
+  getBookingsByDate(date: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/bookings/filter-by-date/`, { date });
+  }
+  getCurrentBookingsForUser(userId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/bookings/current/user/${userId}`);
+  }
+  getPastBookingsForUser(userId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/bookings/past/user/${userId}`);
   }
 }

@@ -12,7 +12,6 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getUsers(): Observable<any> {
-    console.log(`${this.apiUrl}/user/users`);
     return this.http.get(`${this.apiUrl}/user/users`);
   }
 }

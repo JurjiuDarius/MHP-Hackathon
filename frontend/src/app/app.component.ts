@@ -48,4 +48,22 @@ export class AppComponent {
       this.navItems = this.navDictionary[this.currentRole];
     }
   }
+
+  navigateToUserProfile(): void {
+    this.router.navigate(['/user-profile']);
+  }
+
+  navigateToHome(): void {
+    this.router.navigate(['/new-booking']);
+  }
+
+  navigateToAdmin(): void {
+    this.router.navigate(['/admin']);
+  }
+
+  isAdmin(): boolean {
+    const currentRole = localStorage.getItem('currentRole');
+    return currentRole === 'admin';
+  }
+
 }
