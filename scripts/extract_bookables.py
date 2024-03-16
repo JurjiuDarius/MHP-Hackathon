@@ -23,7 +23,7 @@ if __name__ == "__main__":
         print(match)
     with open("extracted_desks.txt", "w") as f:
         for match in desk_matches:
-            lines = match.split("\n")
+            lines = match.strip(".").split("\n")
             id = lines[0].split("{")[0]
             margin_left = lines[1].split(":")[1].split("px")[0]
             margin_top = lines[2].split(":")[1].split("px")[0]
@@ -32,7 +32,7 @@ if __name__ == "__main__":
 
     with open("extracted_rooms.txt", "w") as f:
         for match in room_matches:
-            lines = match.split("\n")
+            lines = match.strip(".").split("\n")
             id = lines[0].split("{")[0]
             margin_left = lines[1].split(":")[1].split("px")[0]
             margin_top = lines[2].split(":")[1].split("px")[0]

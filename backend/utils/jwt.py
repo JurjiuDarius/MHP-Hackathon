@@ -6,7 +6,7 @@ import jwt
 import os
 from flask import current_app
 
-load_dotenv()
+load_dotenv(override=False)
 SECRET_KEY = os.environ.get("SECRET_JWT_KEY", "secret")
 
 

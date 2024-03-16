@@ -93,7 +93,7 @@ export class BookDeskDialogComponent {
 
   getFormattedDate(currentDate: Date): string {
     if (currentDate) {
-      return this.datePipe.transform(currentDate, 'MM/dd/yyyy') || '';
+      return this.datePipe.transform(currentDate, 'dd/MM/yyyy') || '';
     }
     return '';
   }
