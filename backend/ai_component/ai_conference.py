@@ -61,19 +61,20 @@ print("Conference data shape:", np.array(X_train).shape)
 
 val = tf.keras.Input(shape=(12,))
 model = tf.keras.Sequential([
-    tf.keras.layers.Dense(24 , activation='relu'),
+    tf.keras.layers.Dense(24 , activation='linear'),
     tf.keras.layers.Dense(44 , activation='gelu'),
     tf.keras.layers.Dense(32 , activation='relu'),
     tf.keras.layers.Dense(32 , activation='tanh'),
     tf.keras.layers.Dense(32 , activation='relu'),
     tf.keras.layers.Dense(16 , activation='relu'),
+    tf.keras.layers.Dense(13 , activation='relu'),
     tf.keras.layers.Dense(8 , activation='gelu'),
     tf.keras.layers.Dense(1 , activation='sigmoid')
 ])
 
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
-model.fit(X_train, y_train, epochs=50, batch_size=2)
+model.fit(X_train, y_train, epochs=500, batch_size=1)
 
 loss, accuracy = model.evaluate(X_test, y_test)
 print("Test Accuracy:", accuracy)
