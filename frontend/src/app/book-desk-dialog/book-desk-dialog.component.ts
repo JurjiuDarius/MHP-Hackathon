@@ -51,7 +51,6 @@ export class BookDeskDialogComponent {
   ) {
     this.userService.getUsers().subscribe({
       next: (response) => {
-        console.log(response);
         this.users = response;
       },
       error: (error) => {
@@ -75,8 +74,6 @@ export class BookDeskDialogComponent {
     } else {
       this.selectedPeople.push(person);
     }
-    // console.log('Selected people:', this.selectedPeople);
-    // You can perform any additional logic here
   }
 
   onCancel(): void {
@@ -84,9 +81,6 @@ export class BookDeskDialogComponent {
   }
 
   onConfirm(): void {
-    // Perform confirmation logic here
-    console.log(this.selectedPeople);
-    console.log(this.data);
     this.bookingService.createBooking(this.data);
     this.dialogRef.close();
   }
