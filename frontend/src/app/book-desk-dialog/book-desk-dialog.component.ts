@@ -5,8 +5,11 @@ import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {MatCheckbox} from "@angular/material/checkbox";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {MatButton} from "@angular/material/button";
+import {User} from "../models/user";
+import {UserService} from "../service/user.service";
+import {BookingService} from "../service/booking.service";
 
 @Component({
   selector: 'app-book-desk-dialog',
@@ -23,7 +26,8 @@ import {MatButton} from "@angular/material/button";
     MatCheckbox,
     NgForOf,
     MatCardHeader,
-    MatButton
+    MatButton,
+    NgIf
   ],
   templateUrl: './book-desk-dialog.component.html',
   styleUrl: './book-desk-dialog.component.scss'
@@ -31,10 +35,30 @@ import {MatButton} from "@angular/material/button";
 export class BookDeskDialogComponent {
 
   people: string[] = ['Item 1', 'Item 2', 'Item 3'];
+  public users: User[] = []
+  public bookings: Booking[] = []
   selectedPeople: string[] = [];
 
   constructor(public dialogRef: MatDialogRef<BookDeskDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: string){ }
+              @Inject(MAT_DIALOG_DATA) public data: string, private userService: UserService, private bookingService: BookingService){
+    this.userService.getUsers().subscribe({
+      next: (response) => {
+        this.users = response;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+
+    this.bookingService.getBookings().subscribe({
+      next: (response) => {
+        this.bookings = response;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
 
   toggleSelection(person: string) {
     if (this.selectedPeople.includes(person)) {
