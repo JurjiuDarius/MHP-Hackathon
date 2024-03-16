@@ -10,8 +10,20 @@
   z-index: -1;
 }
 
-.loc{
+.loc-liber{
   background-color: lightgreen;
+  position: absolute;
+  color: black;
+}
+
+.loc-semi-ocupat{
+  background-color: orange;
+  position: absolute;
+  color: black;
+}
+
+.loc-ocupat{
+  background-color: red;
   position: absolute;
   color: black;
 }
