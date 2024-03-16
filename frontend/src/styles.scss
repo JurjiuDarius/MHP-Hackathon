@@ -12,3 +12,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 //  background: orange !important;
 //  border-radius: 100%;
 //}
+
+.mat-calendar-body-cell.weekend-date {
+  opacity: 0.5; /* Reduce opacity to visually indicate disabled dates */
+  pointer-events: none; /* Disable pointer events */
+}

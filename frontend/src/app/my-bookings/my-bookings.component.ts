@@ -16,7 +16,7 @@ export class MyBookingsComponent {
       next: (response) => {
         this.bookings = response;
       },
-      error: (error) => {
+            error: (error) => {
         console.log(error);
       },
     });

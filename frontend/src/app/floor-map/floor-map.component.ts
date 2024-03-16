@@ -152,19 +152,32 @@ export class FloorMapComponent {
     'CLUJ_5_beta_33_2',
     'CLUJ_5_beta_33_3',
     'CLUJ_5_beta_33_4',
+    'Pit-Lane',
+    'Dry-Lane',
+    'JockerLap',
+    'Quick8',
+    'PolePosition',
+    'Cockpit'
   ];
 
-  constructor(public dialog: MatDialog, private datePipe: DatePipe) {}
+  occupationDict: { [id: string]: number } = {};
+
+
+
+  constructor(public dialog: MatDialog, private datePipe: DatePipe) {
+    this.buttonIds.forEach(id => {
+      this.occupationDict[id] = 0;
+    });
+  }
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     if (view === 'month') {
-      const date = cellDate.getDate();
+      const dayOfWeek = cellDate.getDay(); // 0 for Sunday, 1 for Monday, ...
 
-      // if (date === 1 || date === 20)
-      //   return 'fully-booked-date';
-      //
-      // if (date % 5 ===0)
-      //   return 'partially-booked-date';
+      // Check if the day is Saturday (6) or Sunday (0)
+      if (dayOfWeek === 0 || dayOfWeek === 6) {
+        return 'weekend-date';
+      }
     }
     return '';
   };
