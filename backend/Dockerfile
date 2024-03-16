@@ -15,4 +15,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 5000
 RUN chmod +x entrypoint.sh
 # Run the application when the container launches
-ENTRYPOINT [ "entrypoint.sh" ]
+CMD [ "python", "app.py" ]

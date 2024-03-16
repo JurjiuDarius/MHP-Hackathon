@@ -10,10 +10,16 @@ import models
 
 
 def create_app():
-    load_dotenv(override=False)
+    if os.path.exists("/.dockerenv"):
+        load_dotenv(override=False)
+    else:
+        load_dotenv(override=True)
+
     app = Flask(__name__)
     env_config = os.getenv("APP_SETTINGS")
     app.config.from_object(env_config)
+    print(app.config)
+
     db.init_app(app)
     for blueprint in blueprints:
         app.register_blueprint(blueprint)
@@ -43,5 +49,5 @@ if __name__ == "__main__":
         add_all_to_database()
     args = parser.parse_args()
     port = args.port
-
+    os.system("flask db upgrade")
     app.run(host="0.0.0.0", port=port, ssl_context=(CERT_FILE, KEY_FILE))
