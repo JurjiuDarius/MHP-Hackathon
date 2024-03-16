@@ -20,17 +20,5 @@ export class MyBookingsComponent {
     });
   }
 
-  deleteBooking(bookingID: number) {
-    this.bookingService.deleteBooking(bookingID).subscribe({
-      next: (response) => {
-        this.bookings = this.bookings.filter(
-          (booking) => booking.id !== bookingID
-        );
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
-  }
   goToDetails(bookingID: number) {}
 }

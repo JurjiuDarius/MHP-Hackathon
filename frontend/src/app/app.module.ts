@@ -24,6 +24,9 @@ import {
   MatDatepickerToggle,
 } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import {UserPageComponent} from "./user-page/user-page.component";
+import {MatTab, MatTabGroup} from "@angular/material/tabs";
+import {OngoingBookingsComponent} from "./ongoing-bookings/ongoing-bookings.component";
 
 @NgModule({
   declarations: [
@@ -31,6 +34,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     LoginComponent,
     MyBookingsComponent,
     FloorMapComponent,
+    UserPageComponent,
+    OngoingBookingsComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +55,13 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatDatepicker,
     MatDatepickerInput,
     MatMomentDateModule,
+    MatTabGroup,
+    MatTab,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
+  exports: [
+    MyBookingsComponent
+  ]
 })
 export class AppModule {}
