@@ -48,4 +48,13 @@ export class AppComponent {
       this.navItems = this.navDictionary[this.currentRole];
     }
   }
+
+  navigateToUserProfile(): void {
+    this.router.navigate(['/user-profile']);
+  }
+
+  navigateToHome(): void {
+    this.router.navigate(['/new-booking']);
+  }
+
 }

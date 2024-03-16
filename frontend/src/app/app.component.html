@@ -1,16 +1,32 @@
+<!--<mat-toolbar *ngIf="currentRole" color="primary">-->
+<!--  <span>MHP Booking</span>-->
+<!--  <span class="spacer"></span>-->
+<!--  <button-->
+<!--    class="navigation"-->
+<!--    mat-button-->
+<!--    *ngFor="let item of navItems"-->
+<!--    [routerLink]="[item.path]"-->
+<!--  >-->
+<!--    {{ item.label }}-->
+<!--  </button>-->
+<!--  <button class="logout" mat-button *ngIf="currentRole" (click)="logOut()">-->
+<!--    <mat-icon>exit_to_app</mat-icon>-->
+<!--  </button>-->
+<!--</mat-toolbar>-->
 <mat-toolbar *ngIf="currentRole" color="primary">
-  <span>MHP Booking</span>
-  <span class="spacer"></span>
-  <button
-    class="navigation"
-    mat-button
-    *ngFor="let item of navItems"
-    [routerLink]="[item.path]"
-  >
-    {{ item.label }}
+<!--  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
+<!--    <mat-icon>menu</mat-icon>-->
+<!--  </button>-->
+  <span (click)="navigateToHome()">MHP Booking</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button (click)="navigateToHome()">
+    <mat-icon>home</mat-icon>
   </button>
-  <button class="logout" mat-button *ngIf="currentRole" (click)="logOut()">
-    Log out
+  <button mat-icon-button (click)="navigateToUserProfile()">
+    <mat-icon>person</mat-icon>
+  </button>
+  <button mat-icon-button *ngIf="currentRole" (click)="logOut()">
+    <mat-icon>exit_to_app</mat-icon>
   </button>
 </mat-toolbar>
 <router-outlet></router-outlet>

@@ -53,9 +53,8 @@
       <mat-card-content *ngFor="let person of users">
         <mat-checkbox
           [checked]="selectedPeople.includes(person.username)"
-          (change)="toggleSelection(person.username)"
-        >
-          {{ person }}
+          (change)="toggleSelection(person.username)">
+          {{ person.username }}
         </mat-checkbox>
       </mat-card-content>
     </div>

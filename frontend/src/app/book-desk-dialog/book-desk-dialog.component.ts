@@ -22,6 +22,8 @@ import { User } from '../models/user';
 import { UserService } from '../service/user.service';
 import { BookingService } from '../service/booking.service';
 import { FormsModule } from '@angular/forms';
+import {BehaviorSubject, Observable} from "rxjs";
+import {Bookable} from "../models/bookable";
 
 @Component({
   selector: 'app-book-desk-dialog',
@@ -52,6 +54,7 @@ export class BookDeskDialogComponent {
   selectedPeople: string[] = [];
   startTime: string = '';
   endTime: string = '';
+  bookableList: Bookable[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<BookDeskDialogComponent>,
@@ -60,6 +63,14 @@ export class BookDeskDialogComponent {
     private userService: UserService,
     private bookingService: BookingService
   ) {
+    this.bookingService.getBookable().subscribe({
+      next: (response) => {
+        this.bookableList = response;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    })
     this.userService.getUsers().subscribe({
       next: (response) => {
         this.users = response;
@@ -85,6 +96,15 @@ export class BookDeskDialogComponent {
     } else {
       this.selectedPeople.push(person);
     }
+    let capacity: number;
+    // @ts-ignore
+    capacity = +this.bookableList.find(item => item.id === this.data.bookable_id)?.capacity;
+    if (this.selectedPeople.length > capacity) {
+      console.log("CAPACITATE")
+      console.log(capacity)
+    }
+
+
   }
 
   onCancel(): void {

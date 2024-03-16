@@ -189,10 +189,6 @@ export class FloorMapComponent {
       end: '',
     };
 
-    console.log('SELECTED DATE:');
-    console.log(this.selectedDate);
-    console.log(this.booking);
-
     this.dialog.open(BookDeskDialogComponent, {
       data: this.booking,
     });
