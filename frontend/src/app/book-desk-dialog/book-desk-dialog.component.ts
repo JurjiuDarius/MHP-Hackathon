@@ -22,6 +22,8 @@ import { User } from '../models/user';
 import { UserService } from '../service/user.service';
 import { BookingService } from '../service/booking.service';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { BookableService } from '../service/bookable.service';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Bookable} from "../models/bookable";
 
@@ -51,6 +53,7 @@ import {Bookable} from "../models/bookable";
 export class BookDeskDialogComponent {
   public users: User[] = [];
   public bookings: Booking[] = [];
+  public capacity: number = 0;
   selectedPeople: string[] = [];
   startTime: string = '';
   endTime: string = '';
@@ -58,11 +61,23 @@ export class BookDeskDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<BookDeskDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Booking,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private datePipe: DatePipe,
     private userService: UserService,
-    private bookingService: BookingService
+    private bookingService: BookingService,
+    private bookableService: BookableService,
+    private snackbar: MatSnackBar
   ) {
+    this.bookableService.getCapacityForBookable(data.bookable_id).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.capacity = response;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+
     this.bookingService.getBookable().subscribe({
       next: (response) => {
         this.bookableList = response;
@@ -79,7 +94,6 @@ export class BookDeskDialogComponent {
         console.log(error);
       },
     });
-    console.log(data.date);
     this.bookingService.getBookingsByDate(data.date).subscribe({
       next: (response) => {
         this.bookings = response;
@@ -96,37 +110,64 @@ export class BookDeskDialogComponent {
     } else {
       this.selectedPeople.push(person);
     }
-    let capacity: number;
-    // @ts-ignore
-    capacity = +this.bookableList.find(item => item.id === this.data.bookable_id)?.capacity;
-    if (this.selectedPeople.length > capacity) {
-      console.log("CAPACITATE")
-      console.log(capacity)
-    }
-
-
   }
 
   onCancel(): void {
     this.dialogRef.close();
   }
 
-  getFormattedDate(currentDate: Date): string {
-    if (currentDate) {
-      return this.datePipe.transform(currentDate, 'dd/MM/yyyy') || '';
-    }
-    return '';
-  }
-
   onConfirm(): void {
     console.log(this.selectedPeople);
-    console.log(this.data);
-    if (this.data.date.length == 0) {
-      const currentDate = new Date();
-      this.data.date = this.getFormattedDate(currentDate);
+    // check if start time is before end time
+
+    //check if at least half the capacity is occupied
+    if (
+      this.capacity != 1 &&
+      this.selectedPeople.length + 1 < this.capacity / 2
+    ) {
+      this.snackbar.open(
+        'At least half the capacity of the room needs to be occupied !',
+        'Close',
+        {
+          duration: 2000,
+        }
+      );
+      return;
     }
+    if (this.startTime >= this.endTime) {
+      this.snackbar.open(
+        'The start time needs to be before the end time !',
+        'Close',
+        {
+          duration: 2000,
+        }
+      );
+      return;
+    }
+    //check if there are other bookings for the same desk
+    for (let booking of this.bookings) {
+      if (booking.bookable_id === this.data.bookable_id) {
+        if (
+          (this.startTime >= booking.start && this.startTime <= booking.end) ||
+          (this.endTime >= booking.start && this.endTime <= booking.end) ||
+          (this.startTime <= booking.start && this.endTime >= booking.end)
+        ) {
+          this.snackbar.open(
+            'The desk is already booked for the selected time interval !',
+            'Close',
+            {
+              duration: 2000,
+            }
+          );
+          return;
+        }
+      }
+    }
+
     this.data.start = this.startTime;
     this.data.end = this.endTime;
+    this.data.people = this.selectedPeople;
+
     this.bookingService.createBooking(this.data).subscribe();
     this.dialogRef.close();
   }

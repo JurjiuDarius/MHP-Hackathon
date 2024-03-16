@@ -17,6 +17,7 @@ def create_booking():
             data["date"],
             data["start"],
             data["end"],
+            data["people"],
         )
         return jsonify(booking.serialize()), 201
     except Exception as e:
@@ -68,4 +69,4 @@ def get_all_bookings():
 def filter_bookings_by_date():
     booking_date = request.json["date"]
     bookings = booking_service.filter_bookings_by_date(booking_date)
-    return jsonify(bookings)
+    return jsonify(bookings), 200

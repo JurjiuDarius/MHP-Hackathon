@@ -171,7 +171,7 @@ export class FloorMapComponent {
 
   getFormattedDate(): string {
     if (this.selectedDate) {
-      return this.datePipe.transform(this.selectedDate, 'dd/MM/yyyy') || '';
+      return this.datePipe.transform(this.selectedDate, 'MM/dd/yyyy') || '';
     }
     return '';
   }

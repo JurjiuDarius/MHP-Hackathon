@@ -5,12 +5,12 @@ from database import db
 from flask_cors import CORS
 from dotenv import load_dotenv
 from models.migrations.init_db import add_all_to_database
+from sqlalchemy import text
 import os
 import models
 
 
 def create_app():
-    print(os.environ)
 
     if os.path.exists("/.dockerenv"):
         load_dotenv(override=False)
@@ -48,6 +48,9 @@ if __name__ == "__main__":
     KEY_FILE = app.config.get("KEY_LOCATION", "key.pem")
     with app.app_context():
         add_all_to_database()
+        with db.engine.connect() as connection:
+            connection.execute(text("SET datestyle = 'ISO, MDY';"))
+
     args = parser.parse_args()
     port = args.port
     os.system("flask db upgrade")
