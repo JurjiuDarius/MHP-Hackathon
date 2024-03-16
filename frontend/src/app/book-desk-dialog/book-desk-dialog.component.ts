@@ -23,6 +23,7 @@ import { UserService } from '../service/user.service';
 import { BookingService } from '../service/booking.service';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { BookableService } from '../service/bookable.service';
 
 @Component({
   selector: 'app-book-desk-dialog',
@@ -50,6 +51,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class BookDeskDialogComponent {
   public users: User[] = [];
   public bookings: Booking[] = [];
+  public capacity: number = 0;
   selectedPeople: string[] = [];
   startTime: string = '';
   endTime: string = '';
@@ -60,8 +62,19 @@ export class BookDeskDialogComponent {
     private datePipe: DatePipe,
     private userService: UserService,
     private bookingService: BookingService,
+    private bookableService: BookableService,
     private snackbar: MatSnackBar
   ) {
+    this.bookableService.getCapacityForBookable(data.bookable_id).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.capacity = response;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+
     this.userService.getUsers().subscribe({
       next: (response) => {
         this.users = response;
@@ -95,6 +108,21 @@ export class BookDeskDialogComponent {
   onConfirm(): void {
     console.log(this.selectedPeople);
     // check if start time is before end time
+
+    //check if at least half the capacity is occupied
+    if (
+      this.capacity != 1 &&
+      this.selectedPeople.length + 1 < this.capacity / 2
+    ) {
+      this.snackbar.open(
+        'At least half the capacity of the room needs to be occupied !',
+        'Close',
+        {
+          duration: 2000,
+        }
+      );
+      return;
+    }
     if (this.startTime >= this.endTime) {
       this.snackbar.open(
         'The start time needs to be before the end time !',

@@ -69,4 +69,4 @@ def get_all_bookings():
 def filter_bookings_by_date():
     booking_date = request.json["date"]
     bookings = booking_service.filter_bookings_by_date(booking_date)
-    return jsonify(bookings)
+    return jsonify(bookings), 200

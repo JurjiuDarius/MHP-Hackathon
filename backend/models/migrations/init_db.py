@@ -14,6 +14,8 @@ def add_rooms_to_database():
     with open(ROOMS_LOCATION, "r") as file:
         for line in file:
             split_info = id = line.strip().split(" ")
+            if "" in split_info:
+                split_info.remove(" ")
             id = split_info[0]
             capacity = int(split_info[3])
             room = Room.query.get(id)
@@ -28,6 +30,8 @@ def add_desks_to_database():
         for line in file:
             split_info = id = line.strip().split(" ")
             id = split_info[0]
+            if "" in split_info:
+                split_info.remove("")
             desk = Desk.query.get(id)
             if not desk:
                 desk = Desk(id=id, map_id=MAP_ID)
@@ -39,7 +43,8 @@ def add_users_to_database():
     with open(USER_LOCATION, "r") as file:
         for line in file:
             split_info = line.strip().split(" ")
-
+            if "" in split_info:
+                split_info.remove("")
             email = split_info[0]
             password = split_info[1]
             username = split_info[2]
