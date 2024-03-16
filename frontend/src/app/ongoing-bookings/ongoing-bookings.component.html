@@ -4,7 +4,7 @@
 </div>
 
 <ng-container *ngFor="let booking of bookings">
-  <ng-container *ngIf="isPastDate(booking.date)">
+  <ng-container *ngIf="isOpenBooking(booking)">
     <mat-card class="booking-card">
       <mat-card-content>
         <div class="booking-info">
@@ -17,6 +17,9 @@
             {{ booking.start }} - {{ booking.end }}
           </div>
         </div>
+        <button mat-icon-button color="warn" (click)="deleteBooking(booking.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
       </mat-card-content>
     </mat-card>
   </ng-container>

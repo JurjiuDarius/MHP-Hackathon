@@ -1,0 +1,6 @@
+PitLane   621  110
+DryLane   676  110
+JockerLap   730  110
+Quick8   275  230
+PolePosition   1385  500
+Cockpit   1685  450

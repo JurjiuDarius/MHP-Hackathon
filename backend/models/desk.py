@@ -5,13 +5,13 @@ from sqlalchemy import ForeignKey
 
 
 class Desk(Bookable):
-    id = mapped_column(ForeignKey("bookable.id"), primary_key=True)
-
-    number_available = db.Column(db.Integer, nullable=False)
+    id = db.Column(db.String, db.ForeignKey("bookable.id"), primary_key=True)
 
     __mapper_args__ = {
         "polymorphic_identity": "desk",
     }
 
-    def __init__(self, number_available):
-        self.number_available = number_available
+    def __init__(self, id, map_id):
+        super().__init__(map_id)
+        self.id = id
+        self.map_id = map_id

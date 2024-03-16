@@ -4,19 +4,19 @@ import { LoginComponent } from './auth/login/login.component';
 import { MyBookingsComponent } from './my-bookings/my-bookings.component';
 import { FloorMapComponent } from './floor-map/floor-map.component';
 import { PiechartComponent } from './piechart/piechart.component';
-import { MixedchartComponent } from './mixedchart/mixedchart.component';
-import { NgApexchartsModule } from "ng-apexcharts";
+import { NgApexchartsModule } from 'ng-apexcharts';
 
+import { UserPageComponent } from './user-page/user-page.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
     component: LoginComponent,
   },
-  { path: 'my-bookings', component: MyBookingsComponent },
+  // { path: 'my-bookings', component: MyBookingsComponent },
   { path: 'new-booking', component: FloorMapComponent },
   { path: 'piechart', component: PiechartComponent },
-  { path: 'mixedchart', component: MixedchartComponent },
+  { path: 'user-profile', component: UserPageComponent },
 ];
 
 @NgModule({

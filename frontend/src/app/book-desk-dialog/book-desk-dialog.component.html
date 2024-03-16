@@ -1,0 +1,68 @@
+<div class="modal">
+  <h2>
+    Create a booking for <b>{{ data.bookable_id }}</b>
+  </h2>
+  <hr />
+  <div class="middle-div">
+    <mat-card class="alte-rezervari">
+      <mat-card-header>Other bookings</mat-card-header>
+      <div class="list">
+        <mat-card-content *ngIf="bookings && bookings.length === 0">
+          <mat-card class="no-users-card">No bookings found</mat-card>
+        </mat-card-content>
+        <mat-card-content *ngFor="let booking of bookings">
+          <ng-container *ngIf="booking.bookable_id === data.bookable_id">
+            <mat-card>
+              Start: {{ booking.start }} End:
+              {{ booking.end }}
+            </mat-card>
+          </ng-container>
+        </mat-card-content>
+      </div>
+    </mat-card>
+    <div class="time-selection">
+      <p>Select starting time:</p>
+      <input
+        type="time"
+        id="start"
+        #startTimeInput
+        min="09:00"
+        max="18:00"
+        required
+        [(ngModel)]="startTime"
+      />
+      <p>Select ending time:</p>
+      <input
+        type="time"
+        id="end"
+        #endTimeInput
+        min="09:00"
+        max="18:00"
+        required
+        [(ngModel)]="endTime"
+      />
+    </div>
+  </div>
+  <br />
+  <mat-card class="participanti-meeting">
+    <mat-card-header> Add people to the meeting </mat-card-header>
+    <div class="list">
+      <mat-card-content *ngIf="users && users.length === 0">
+        <mat-card class="no-users-card">No users found</mat-card>
+      </mat-card-content>
+      <mat-card-content *ngFor="let person of users">
+        <mat-checkbox
+          [checked]="selectedPeople.includes(person.email)"
+          (change)="toggleSelection(person.email)"
+        >
+          {{ person.email }}
+        </mat-checkbox>
+      </mat-card-content>
+    </div>
+  </mat-card>
+  <br />
+  <mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button color="primary" (click)="onConfirm()">Confirm</button>
+  </mat-dialog-actions>
+</div>
