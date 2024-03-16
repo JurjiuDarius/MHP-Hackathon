@@ -1,727 +1,726 @@
-.harta{
-    width: 100%;
-    position: relative;
-    overflow-x: scroll;
-    height: 710px;
-  }
-  
-  .locuri_background{
-    position: absolute;
-    z-index: -1;
-  }
-  
-  .loc{
-    background-color: lightgreen;
-    position: absolute;
-    color: black;
-  }
-  
-  .locuri{
-    position: absolute;
-  }
-  
-  .CLUJ_5_beta_1_1{
-    margin-left: 292px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_1_2{
-    margin-left: 332px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_1_3{
-    margin-left: 292px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_1_4{
-    margin-left: 332px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_2_1{
-    margin-left: 403px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_2_2{
-    margin-left: 443px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_2_3{
-    margin-left: 403px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_2_4{
-    margin-left: 443px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_3_1{
-    margin-left: 518px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_3_2{
-    margin-left: 558px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_3_3{
-    margin-left: 518px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_3_4{
-    margin-left: 558px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_4_1{
-    margin-left: 804px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_4_2{
-    margin-left: 844px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_4_3{
-    margin-left: 804px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_4_4{
-    margin-left: 844px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_5_1{
-    margin-left: 916px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_5_2{
-    margin-left: 956px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_5_3{
-    margin-left: 916px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_5_4{
-    margin-left: 956px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_6_1{
-    margin-left: 1027px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_6_2{
-    margin-left: 1067px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_6_3{
-    margin-left: 1027px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_6_4{
-    margin-left: 1067px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_7_1{
-    margin-left: 1142px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_7_2{
-    margin-left: 1182px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_7_3{
-    margin-left: 1142px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_7_4{
-    margin-left: 1182px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_8_1{
-    margin-left: 1253px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_8_2{
-    margin-left: 1293px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_8_3{
-    margin-left: 1253px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_8_4{
-    margin-left: 1293px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_9_1{
-    margin-left: 1364px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_9_2{
-    margin-left: 1404px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_9_3{
-    margin-left: 1364px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_9_4{
-    margin-left: 1404px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_10_1{
-    margin-left: 1476px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_10_2{
-    margin-left: 1516px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_10_3{
-    margin-left: 1476px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_10_4{
-    margin-left: 1516px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_11_1{
-    margin-left: 1589px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_11_2{
-    margin-left: 1629px;
-    margin-top: 100px;
-  }
-  
-  .CLUJ_5_beta_11_3{
-    margin-left: 1589px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_11_4{
-    margin-left: 1629px;
-    margin-top: 140px;
-  }
-  
-  .CLUJ_5_beta_12_1{
-    margin-left: 291px;
-    margin-top: 385px;
-  }
-  
-  .CLUJ_5_beta_12_2{
-    margin-left: 331px;
-    margin-top: 385px;
-  }
-  
-  .CLUJ_5_beta_12_3{
-    margin-left: 291px;
-    margin-top: 425px;
-  }
-  
-  .CLUJ_5_beta_12_4{
-    margin-left: 331px;
-    margin-top: 425px;
-  }
-  
-  .CLUJ_5_beta_13_1{
-    margin-left: 405px;
-    margin-top: 385px;
-  }
-  
-  .CLUJ_5_beta_13_2{
-    margin-left: 445px;
-    margin-top: 385px;
-  }
-  
-  .CLUJ_5_beta_13_3{
-    margin-left: 405px;
-    margin-top: 425px;
-  }
-  
-  .CLUJ_5_beta_13_4{
-    margin-left: 445px;
-    margin-top: 425px;
-  }
-  
-  .CLUJ_5_beta_14_1{
-    margin-left: 518px;
-    margin-top: 385px;
-  }
-  
-  .CLUJ_5_beta_14_2{
-    margin-left: 558px;
-    margin-top: 385px;
-  }
-  
-  .CLUJ_5_beta_14_3{
-    margin-left: 518px;
-    margin-top: 425px;
-  }
-  
-  .CLUJ_5_beta_14_4{
-    margin-left: 558px;
-    margin-top: 425px;
-  }
-  
-  .CLUJ_5_beta_15_1{
-    margin-left: 743px;
-    margin-top: 394px;
-  }
-  
-  .CLUJ_5_beta_15_2{
-    margin-left: 783px;
-    margin-top: 394px;
-  }
-  
-  .CLUJ_5_beta_15_3{
-    margin-left: 743px;
-    margin-top: 434px;
-  }
-  
-  .CLUJ_5_beta_15_4{
-    margin-left: 783px;
-    margin-top: 434px;
-  }
-  
-  .CLUJ_5_beta_16_1{
-    margin-left: 179px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_16_2{
-    margin-left: 219px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_16_3{
-    margin-left: 179px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_16_4{
-    margin-left: 219px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_17_1{
-    margin-left: 291px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_17_2{
-    margin-left: 331px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_17_3{
-    margin-left: 291px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_17_4{
-    margin-left: 331px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_18_1{
-    margin-left: 405px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_18_2{
-    margin-left: 445px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_18_3{
-    margin-left: 405px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_18_4{
-    margin-left: 445px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_19_1{
-    margin-left: 518px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_19_2{
-    margin-left: 558px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_19_3{
-    margin-left: 518px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_19_4{
-    margin-left: 558px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_20_1{
-    margin-left: 628px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_20_2{
-    margin-left: 668px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_20_3{
-    margin-left: 628px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_20_4{
-    margin-left: 668px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_21_1{
-    margin-left: 743px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_21_2{
-    margin-left: 783px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_21_3{
-    margin-left: 743px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_21_4{
-    margin-left: 783px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_22_1{
-    margin-left: 854px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_22_2{
-    margin-left: 894px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_22_3{
-    margin-left: 854px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_22_4{
-    margin-left: 894px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_23_1{
-    margin-left: 965px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_23_2{
-    margin-left: 1005px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_23_3{
-    margin-left: 965px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_23_4{
-    margin-left: 1005px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_24_1{
-    margin-left: 1077px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_24_2{
-    margin-left: 1117px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_24_3{
-    margin-left: 1077px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_24_4{
-    margin-left: 1117px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_25_1{
-    margin-left: 1190px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_25_2{
-    margin-left: 1230px;
-    margin-top: 485px;
-  }
-  
-  .CLUJ_5_beta_25_3{
-    margin-left: 1190px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_25_4{
-    margin-left: 1230px;
-    margin-top: 525px;
-  }
-  
-  .CLUJ_5_beta_26_1{
-    margin-left: 1446px;
-    margin-top: 212px;
-  }
-  
-  .CLUJ_5_beta_26_2{
-    margin-left: 1486px;
-    margin-top: 212px;
-  }
-  
-  .CLUJ_5_beta_26_3{
-    margin-left: 1446px;
-    margin-top: 252px;
-  }
-  
-  .CLUJ_5_beta_26_4{
-    margin-left: 1486px;
-    margin-top: 252px;
-  }
-  
-  .CLUJ_5_beta_27_1{
-    margin-left: 1535px;
-    margin-top: 212px;
-  }
-  
-  .CLUJ_5_beta_27_2{
-    margin-left: 1575px;
-    margin-top: 212px;
-  }
-  
-  .CLUJ_5_beta_27_3{
-    margin-left: 1535px;
-    margin-top: 252px;
-  }
-  
-  .CLUJ_5_beta_27_4{
-    margin-left: 1575px;
-    margin-top: 252px;
-  }
-  
-  .CLUJ_5_beta_28_1{
-    margin-left: 1337px;
-    margin-top: 337px;
-  }
-  
-  .CLUJ_5_beta_28_2{
-    margin-left: 1377px;
-    margin-top: 337px;
-  }
-  
-  .CLUJ_5_beta_28_3{
-    margin-left: 1337px;
-    margin-top: 377px;
-  }
-  
-  .CLUJ_5_beta_28_4{
-    margin-left: 1377px;
-    margin-top: 377px;
-  }
-  
-  .CLUJ_5_beta_29_1{
-    margin-left: 1459px;
-    margin-top: 297px;
-  }
-  
-  .CLUJ_5_beta_29_2{
-    margin-left: 1419px;
-    margin-top: 337px;
-  }
-  
-  .CLUJ_5_beta_29_3{
-    margin-left: 1459px;
-    margin-top: 337px;
-  }
-  
-  .CLUJ_5_beta_29_4{
-    margin-left: 1419px;
-    margin-top: 377px;
-  }
-  
-  .CLUJ_5_beta_29_5{
-    margin-left: 1459px;
-    margin-top: 377px;
-  }
-  
-  .CLUJ_5_beta_30_1{
-    margin-left: 1535px;
-    margin-top: 297px;
-  }
-  
-  .CLUJ_5_beta_30_2{
-    margin-left: 1575px;
-    margin-top: 297px;
-  }
-  
-  .CLUJ_5_beta_30_3{
-    margin-left: 1535px;
-    margin-top: 337px;
-  }
-  
-  .CLUJ_5_beta_30_4{
-    margin-left: 1575px;
-    margin-top: 337px;
-  }
-  
-  .CLUJ_5_beta_30_5{
-    margin-left: 1535px;
-    margin-top: 377px;
-  }
-  
-  .CLUJ_5_beta_30_6{
-    margin-left: 1575px;
-    margin-top: 377px;
-  }
-  
-  .CLUJ_5_beta_31_1{
-    margin-left: 158px;
-    margin-top: 127px;
-  }
-  
-  .CLUJ_5_beta_31_2{
-    margin-left: 197px;
-    margin-top: 139px;
-  }
-  
-  .CLUJ_5_beta_31_3{
-    margin-left: 147px;
-    margin-top: 166px;
-  }
-  
-  .CLUJ_5_beta_31_4{
-    margin-left: 186px;
-    margin-top: 179px;
-  }
-  
-  .CLUJ_5_beta_32_1{
-    margin-left: 127px;
-    margin-top: 229px;
-  }
-  
-  .CLUJ_5_beta_32_2{
-    margin-left: 166px;
-    margin-top: 244px;
-  }
-  
-  .CLUJ_5_beta_32_3{
-    margin-left: 117px;
-    margin-top: 269px;
-  }
-  
-  .CLUJ_5_beta_32_4{
-    margin-left: 156px;
-    margin-top:284px;
-  }
-  
-  .CLUJ_5_beta_33_1{
-    margin-left: 97px;
-    margin-top: 349px;
-  }
-  
-  .CLUJ_5_beta_33_2{
-    margin-left: 136px;
-    margin-top: 364px;
-  }
-  
-  .CLUJ_5_beta_33_3{
-    margin-left: 87px;
-    margin-top: 389px;
-  }
-  
-  .CLUJ_5_beta_33_4{
-    margin-left: 125px;
-    margin-top: 404px;
-  }
-  
-  .Pit-Lane{
-    margin-left: 621px;
-    margin-top: 110px;
-  }
-  
-  .Dry-Lane{
-    margin-left: 676px;
-    margin-top: 110px;
-  }
-  
-  .JockerLap{
-    margin-left: 730px;
-    margin-top: 110px;
-  }
-  
-  .Quick8{
-    margin-left: 275px;
-    margin-top: 230px;
-  }
-  
-  .PolePosition{
-    margin-left: 1385px;
-    margin-top: 500px;
-  }
-  
-  .Cockpit{
-    margin-left: 1685px;
-    margin-top: 450px;
-  }
-  
+.harta {
+  width: 100%;
+  position: relative;
+  overflow-x: scroll;
+  height: 710px;
+}
+
+.locuri_background {
+  position: absolute;
+  z-index: -1;
+}
+
+.loc {
+  background-color: lightgreen;
+  position: absolute;
+  color: black;
+}
+
+.locuri {
+  position: absolute;
+}
+
+.CLUJ_5_beta_1_1 {
+  margin-left: 292px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_1_2 {
+  margin-left: 332px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_1_3 {
+  margin-left: 292px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_1_4 {
+  margin-left: 332px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_2_1 {
+  margin-left: 403px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_2_2 {
+  margin-left: 443px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_2_3 {
+  margin-left: 403px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_2_4 {
+  margin-left: 443px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_3_1 {
+  margin-left: 518px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_3_2 {
+  margin-left: 558px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_3_3 {
+  margin-left: 518px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_3_4 {
+  margin-left: 558px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_4_1 {
+  margin-left: 804px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_4_2 {
+  margin-left: 844px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_4_3 {
+  margin-left: 804px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_4_4 {
+  margin-left: 844px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_5_1 {
+  margin-left: 916px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_5_2 {
+  margin-left: 956px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_5_3 {
+  margin-left: 916px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_5_4 {
+  margin-left: 956px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_6_1 {
+  margin-left: 1027px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_6_2 {
+  margin-left: 1067px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_6_3 {
+  margin-left: 1027px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_6_4 {
+  margin-left: 1067px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_7_1 {
+  margin-left: 1142px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_7_2 {
+  margin-left: 1182px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_7_3 {
+  margin-left: 1142px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_7_4 {
+  margin-left: 1182px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_8_1 {
+  margin-left: 1253px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_8_2 {
+  margin-left: 1293px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_8_3 {
+  margin-left: 1253px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_8_4 {
+  margin-left: 1293px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_9_1 {
+  margin-left: 1364px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_9_2 {
+  margin-left: 1404px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_9_3 {
+  margin-left: 1364px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_9_4 {
+  margin-left: 1404px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_10_1 {
+  margin-left: 1476px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_10_2 {
+  margin-left: 1516px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_10_3 {
+  margin-left: 1476px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_10_4 {
+  margin-left: 1516px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_11_1 {
+  margin-left: 1589px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_11_2 {
+  margin-left: 1629px;
+  margin-top: 100px;
+}
+
+.CLUJ_5_beta_11_3 {
+  margin-left: 1589px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_11_4 {
+  margin-left: 1629px;
+  margin-top: 140px;
+}
+
+.CLUJ_5_beta_12_1 {
+  margin-left: 291px;
+  margin-top: 385px;
+}
+
+.CLUJ_5_beta_12_2 {
+  margin-left: 331px;
+  margin-top: 385px;
+}
+
+.CLUJ_5_beta_12_3 {
+  margin-left: 291px;
+  margin-top: 425px;
+}
+
+.CLUJ_5_beta_12_4 {
+  margin-left: 331px;
+  margin-top: 425px;
+}
+
+.CLUJ_5_beta_13_1 {
+  margin-left: 405px;
+  margin-top: 385px;
+}
+
+.CLUJ_5_beta_13_2 {
+  margin-left: 445px;
+  margin-top: 385px;
+}
+
+.CLUJ_5_beta_13_3 {
+  margin-left: 405px;
+  margin-top: 425px;
+}
+
+.CLUJ_5_beta_13_4 {
+  margin-left: 445px;
+  margin-top: 425px;
+}
+
+.CLUJ_5_beta_14_1 {
+  margin-left: 518px;
+  margin-top: 385px;
+}
+
+.CLUJ_5_beta_14_2 {
+  margin-left: 558px;
+  margin-top: 385px;
+}
+
+.CLUJ_5_beta_14_3 {
+  margin-left: 518px;
+  margin-top: 425px;
+}
+
+.CLUJ_5_beta_14_4 {
+  margin-left: 558px;
+  margin-top: 425px;
+}
+
+.CLUJ_5_beta_15_1 {
+  margin-left: 743px;
+  margin-top: 394px;
+}
+
+.CLUJ_5_beta_15_2 {
+  margin-left: 783px;
+  margin-top: 394px;
+}
+
+.CLUJ_5_beta_15_3 {
+  margin-left: 743px;
+  margin-top: 434px;
+}
+
+.CLUJ_5_beta_15_4 {
+  margin-left: 783px;
+  margin-top: 434px;
+}
+
+.CLUJ_5_beta_16_1 {
+  margin-left: 179px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_16_2 {
+  margin-left: 219px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_16_3 {
+  margin-left: 179px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_16_4 {
+  margin-left: 219px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_17_1 {
+  margin-left: 291px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_17_2 {
+  margin-left: 331px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_17_3 {
+  margin-left: 291px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_17_4 {
+  margin-left: 331px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_18_1 {
+  margin-left: 405px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_18_2 {
+  margin-left: 445px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_18_3 {
+  margin-left: 405px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_18_4 {
+  margin-left: 445px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_19_1 {
+  margin-left: 518px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_19_2 {
+  margin-left: 558px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_19_3 {
+  margin-left: 518px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_19_4 {
+  margin-left: 558px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_20_1 {
+  margin-left: 628px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_20_2 {
+  margin-left: 668px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_20_3 {
+  margin-left: 628px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_20_4 {
+  margin-left: 668px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_21_1 {
+  margin-left: 743px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_21_2 {
+  margin-left: 783px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_21_3 {
+  margin-left: 743px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_21_4 {
+  margin-left: 783px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_22_1 {
+  margin-left: 854px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_22_2 {
+  margin-left: 894px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_22_3 {
+  margin-left: 854px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_22_4 {
+  margin-left: 894px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_23_1 {
+  margin-left: 965px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_23_2 {
+  margin-left: 1005px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_23_3 {
+  margin-left: 965px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_23_4 {
+  margin-left: 1005px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_24_1 {
+  margin-left: 1077px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_24_2 {
+  margin-left: 1117px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_24_3 {
+  margin-left: 1077px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_24_4 {
+  margin-left: 1117px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_25_1 {
+  margin-left: 1190px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_25_2 {
+  margin-left: 1230px;
+  margin-top: 485px;
+}
+
+.CLUJ_5_beta_25_3 {
+  margin-left: 1190px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_25_4 {
+  margin-left: 1230px;
+  margin-top: 525px;
+}
+
+.CLUJ_5_beta_26_1 {
+  margin-left: 1446px;
+  margin-top: 212px;
+}
+
+.CLUJ_5_beta_26_2 {
+  margin-left: 1486px;
+  margin-top: 212px;
+}
+
+.CLUJ_5_beta_26_3 {
+  margin-left: 1446px;
+  margin-top: 252px;
+}
+
+.CLUJ_5_beta_26_4 {
+  margin-left: 1486px;
+  margin-top: 252px;
+}
+
+.CLUJ_5_beta_27_1 {
+  margin-left: 1535px;
+  margin-top: 212px;
+}
+
+.CLUJ_5_beta_27_2 {
+  margin-left: 1575px;
+  margin-top: 212px;
+}
+
+.CLUJ_5_beta_27_3 {
+  margin-left: 1535px;
+  margin-top: 252px;
+}
+
+.CLUJ_5_beta_27_4 {
+  margin-left: 1575px;
+  margin-top: 252px;
+}
+
+.CLUJ_5_beta_28_1 {
+  margin-left: 1337px;
+  margin-top: 337px;
+}
+
+.CLUJ_5_beta_28_2 {
+  margin-left: 1377px;
+  margin-top: 337px;
+}
+
+.CLUJ_5_beta_28_3 {
+  margin-left: 1337px;
+  margin-top: 377px;
+}
+
+.CLUJ_5_beta_28_4 {
+  margin-left: 1377px;
+  margin-top: 377px;
+}
+
+.CLUJ_5_beta_29_1 {
+  margin-left: 1459px;
+  margin-top: 297px;
+}
+
+.CLUJ_5_beta_29_2 {
+  margin-left: 1419px;
+  margin-top: 337px;
+}
+
+.CLUJ_5_beta_29_3 {
+  margin-left: 1459px;
+  margin-top: 337px;
+}
+
+.CLUJ_5_beta_29_4 {
+  margin-left: 1419px;
+  margin-top: 377px;
+}
+
+.CLUJ_5_beta_29_5 {
+  margin-left: 1459px;
+  margin-top: 377px;
+}
+
+.CLUJ_5_beta_30_1 {
+  margin-left: 1535px;
+  margin-top: 297px;
+}
+
+.CLUJ_5_beta_30_2 {
+  margin-left: 1575px;
+  margin-top: 297px;
+}
+
+.CLUJ_5_beta_30_3 {
+  margin-left: 1535px;
+  margin-top: 337px;
+}
+
+.CLUJ_5_beta_30_4 {
+  margin-left: 1575px;
+  margin-top: 337px;
+}
+
+.CLUJ_5_beta_30_5 {
+  margin-left: 1535px;
+  margin-top: 377px;
+}
+
+.CLUJ_5_beta_30_6 {
+  margin-left: 1575px;
+  margin-top: 377px;
+}
+
+.CLUJ_5_beta_31_1 {
+  margin-left: 158px;
+  margin-top: 127px;
+}
+
+.CLUJ_5_beta_31_2 {
+  margin-left: 197px;
+  margin-top: 139px;
+}
+
+.CLUJ_5_beta_31_3 {
+  margin-left: 147px;
+  margin-top: 166px;
+}
+
+.CLUJ_5_beta_31_4 {
+  margin-left: 186px;
+  margin-top: 179px;
+}
+
+.CLUJ_5_beta_32_1 {
+  margin-left: 127px;
+  margin-top: 229px;
+}
+
+.CLUJ_5_beta_32_2 {
+  margin-left: 166px;
+  margin-top: 244px;
+}
+
+.CLUJ_5_beta_32_3 {
+  margin-left: 117px;
+  margin-top: 269px;
+}
+
+.CLUJ_5_beta_32_4 {
+  margin-left: 156px;
+  margin-top: 284px;
+}
+
+.CLUJ_5_beta_33_1 {
+  margin-left: 97px;
+  margin-top: 349px;
+}
+
+.CLUJ_5_beta_33_2 {
+  margin-left: 136px;
+  margin-top: 364px;
+}
+
+.CLUJ_5_beta_33_3 {
+  margin-left: 87px;
+  margin-top: 389px;
+}
+
+.CLUJ_5_beta_33_4 {
+  margin-left: 125px;
+  margin-top: 404px;
+}
+
+.PitLane {
+  margin-left: 621px;
+  margin-top: 110px;
+}
+
+.DryLane {
+  margin-left: 676px;
+  margin-top: 110px;
+}
+
+.JockerLap {
+  margin-left: 730px;
+  margin-top: 110px;
+}
+
+.Quick8 {
+  margin-left: 275px;
+  margin-top: 230px;
+}
+
+.PolePosition {
+  margin-left: 1385px;
+  margin-top: 500px;
+}
+
+.Cockpit {
+  margin-left: 1685px;
+  margin-top: 450px;
+}
