@@ -2,8 +2,10 @@ from database import db
 from models import Booking
 
 
-def create_booking(user_id, room_id, date, start, end):
-    booking = Booking(user_id=user_id, room_id=room_id, date=date, start=start, end=end)
+def create_booking(user_id, bookable_id, date, start, end):
+    booking = Booking(
+        user_id=user_id, bookable_id=bookable_id, date=date, start=start, end=end
+    )
     db.session.add(booking)
     db.session.commit()
     return booking

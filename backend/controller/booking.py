@@ -4,22 +4,26 @@ from flask import Blueprint
 from models import Booking
 from service import booking_service
 
-booking = Blueprint("booking", __name__, url_prefix="/bookings")
+booking_blueprint = Blueprint("booking", __name__, url_prefix="/bookings")
 
 
-@booking.route("/", methods=["POST"])
+@booking_blueprint.route("/", methods=["POST"])
 def create_booking():
     try:
         data = request.json
         booking = booking_service.create_booking(
-            data["user_id"], data["room_id"], data["date"], data["start"], data["end"]
+            data["user_id"],
+            data["bookable_id"],
+            data["date"],
+            data["start"],
+            data["end"],
         )
         return jsonify(booking), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
 
-@booking.route("/<int:booking_id>", methods=["GET"])
+@booking_blueprint.route("/<int:booking_id>", methods=["GET"])
 def get_booking(booking_id):
     booking = booking_service.get_booking(booking_id)
     if booking:
@@ -28,7 +32,7 @@ def get_booking(booking_id):
         return jsonify({"error": "Booking not found"}), 404
 
 
-@booking.route("/<int:booking_id>", methods=["PUT"])
+@booking_blueprint.route("/<int:booking_id>", methods=["PUT"])
 def update_booking(booking_id):
     try:
         data = request.json
@@ -44,7 +48,7 @@ def update_booking(booking_id):
         return jsonify({"error": str(e)}), 400
 
 
-@booking.route("/<int:booking_id>", methods=["DELETE"])
+@booking_blueprint.route("/<int:booking_id>", methods=["DELETE"])
 def delete_booking(booking_id):
     try:
         booking_service.delete_booking(booking_id)
@@ -53,14 +57,14 @@ def delete_booking(booking_id):
         return jsonify({"error": str(e)}), 400
 
 
-@booking.route("/", methods=["GET"])
+@booking_blueprint.route("/", methods=["GET"])
 def get_all_bookings():
     all_bookings = Booking.query.all()
 
     return jsonify(all_bookings)
 
 
-@booking.route("/filter-by-date", methods=["GET"])
+@booking_blueprint.route("/filter-by-date", methods=["GET"])
 def filter_bookings_by_date():
     date = request.args.get("date")
     bookings = booking_service.filter_bookings_by_date(date)
