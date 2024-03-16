@@ -1,5 +1,17 @@
 <h1>user-page works!</h1>
 <mat-tab-group>
-  <mat-tab label="Ongoing Bookings"> <app-my-bookings></app-my-bookings> </mat-tab>
-  <mat-tab label="Booking History"> <app-my-bookings></app-my-bookings> </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>schedule</mat-icon> Ongoing Booking
+    </ng-template>
+    <app-my-bookings></app-my-bookings>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>history</mat-icon> Booking History
+    </ng-template>
+    <app-my-bookings></app-my-bookings>
+  </mat-tab>
+
+
 </mat-tab-group>

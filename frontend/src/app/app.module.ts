@@ -25,7 +25,7 @@ import {
 } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import {UserPageComponent} from "./user-page/user-page.component";
-import {MatTab, MatTabGroup} from "@angular/material/tabs";
+import {MatTab, MatTabGroup, MatTabLabel} from "@angular/material/tabs";
 import {OngoingBookingsComponent} from "./ongoing-bookings/ongoing-bookings.component";
 
 @NgModule({
@@ -57,6 +57,7 @@ import {OngoingBookingsComponent} from "./ongoing-bookings/ongoing-bookings.comp
     MatMomentDateModule,
     MatTabGroup,
     MatTab,
+    MatTabLabel,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

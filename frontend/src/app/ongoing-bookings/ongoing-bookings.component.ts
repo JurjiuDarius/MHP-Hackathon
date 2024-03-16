@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import {DatePipe, NgForOf, NgIf} from "@angular/common";
-import {MatCard, MatCardContent} from "@angular/material/card";
 import {Booking} from "../models/booking";
 import {BookingService} from "../service/booking.service";
 
