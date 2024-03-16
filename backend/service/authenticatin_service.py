@@ -1,7 +1,6 @@
 import hashlib
 from models.user import User
 from utils.jwt import create_token
-from database import db
 
 
 def login(data):
