@@ -61,9 +61,10 @@ print("Conference data shape:", np.array(X_train).shape)
 
 val = tf.keras.Input(shape=(12,))
 model = tf.keras.Sequential([
-    val,
     tf.keras.layers.Dense(24 , activation='relu'),
     tf.keras.layers.Dense(44 , activation='gelu'),
+    tf.keras.layers.Dense(32 , activation='relu'),
+    tf.keras.layers.Dense(32 , activation='tanh'),
     tf.keras.layers.Dense(32 , activation='relu'),
     tf.keras.layers.Dense(16 , activation='relu'),
     tf.keras.layers.Dense(8 , activation='gelu'),
@@ -72,7 +73,7 @@ model = tf.keras.Sequential([
 
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
-model.fit(X_train, y_train, epochs=200, batch_size=2)
+model.fit(X_train, y_train, epochs=50, batch_size=2)
 
 loss, accuracy = model.evaluate(X_test, y_test)
 print("Test Accuracy:", accuracy)
@@ -87,7 +88,7 @@ model.save(f"C:/Users/Mihai/PycharmProjects/ai/mhp hackathon/backend/ai_componen
 y = conference_elevenToOne
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)
 
-model.fit(X_train, y_train, epochs=200, batch_size=2)
+model.fit(X_train, y_train, epochs=50, batch_size=2)
 
 loss, accuracy = model.evaluate(X_test, y_test)
 print("Test Accuracy:", accuracy)
@@ -102,7 +103,7 @@ model.save(f"C:/Users/Mihai/PycharmProjects/ai/mhp hackathon/backend/ai_componen
 y = conference_oneToThree
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)
 
-model.fit(X_train, y_train, epochs=200, batch_size=2)
+model.fit(X_train, y_train, epochs=50, batch_size=2)
 
 loss, accuracy = model.evaluate(X_test, y_test)
 print("Test Accuracy:", accuracy)
@@ -117,7 +118,7 @@ model.save(f"C:/Users/Mihai/PycharmProjects/ai/mhp hackathon/backend/ai_componen
 y = conference_threeToFive
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)
 
-model.fit(X_train, y_train, epochs=200, batch_size=2)
+model.fit(X_train, y_train, epochs=50, batch_size=2)
 
 loss, accuracy = model.evaluate(X_test, y_test)
 print("Test Accuracy:", accuracy)

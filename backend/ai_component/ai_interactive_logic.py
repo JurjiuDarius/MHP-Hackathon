@@ -39,7 +39,7 @@ class ai_controller:
         self.desks_evening = pickle.load(open("ai_component/models/desks-evening.pickle", "rb"))
         self.meeting_rooms_9_11 = tf.keras.models.load_model('ai_component/models/meeting-rooms-9-11-0.56.keras')
         self.meeting_rooms_11_13 = tf.keras.models.load_model('ai_component/models/meeting-rooms-11-13-0.57.keras')
-        self.meeting_rooms_13_15 = tf.keras.models.load_model('ai_component/models/meeting-rooms-13-15-0.56.keras')
+        self.meeting_rooms_13_15 = tf.keras.models.load_model('ai_component/models/meeting-rooms-13-15-0.62.keras')
         self.meeting_rooms_15_17 = tf.keras.models.load_model('ai_component/models/meeting-rooms-15-17-0.56.keras')
 
     def get_desk_prediction_morning(self, desk, day):
