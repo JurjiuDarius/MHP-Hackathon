@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Booking } from '../models/booking';
 import { environment } from '../environments/development';
+import {Bookable} from "../models/bookable";
 @Injectable({
   providedIn: 'root',
 })
@@ -16,6 +17,10 @@ export class BookingService {
 
   createBooking(booking: Booking) {
     return this.http.post(`${this.apiUrl}/bookings/`, booking);
+  }
+
+  getBookable(): Observable<any>{
+    return this.http.get(`${this.apiUrl}/bookables/`)
   }
 
   updateBooking(booking: Booking) {
