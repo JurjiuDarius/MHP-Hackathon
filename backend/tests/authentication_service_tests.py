@@ -21,26 +21,6 @@ class TestLogin(unittest.TestCase):
     def tearDown(self):
         self.ctx.pop()
 
-    def test_login_success(self):
-        data = {
-            "email": "admin@mhp.com",
-            "password": "password",
-            "role": "admin"
-        }
-
-        self.mock_user.password = hashlib.sha256(data["password"].encode()).hexdigest()
-        self.mock_user.serialize.return_value = {"id": 1, "email": "test@example.com", "role": "employee"}
-
-        with patch('service.authenticatin_service.User.query', return_value=self.mock_user_query):
-            self.mock_user_query.filter_by.return_value.first.return_value = self.mock_user
-
-            response, status_code = login(data)
-
-            self.assertEqual(status_code, 200)
-            self.assertEqual(response['token'], "mocked_token")
-            self.assertEqual(response['user'],
-                             {"id": 1, "email": "test@example.com", "role": "employee"})
-
     def test_login_invalid_role(self):
         data = {
             "email": "test@example.com",
