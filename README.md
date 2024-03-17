@@ -1,3 +1,5 @@
+The master branch contains the latest app version.
+
 # The app
 
 ### Design Decisions
