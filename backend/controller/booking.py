@@ -73,8 +73,8 @@ def get_all_bookings():
 @check_authorization(["admin", "employee"])
 @booking_blueprint.route("/filter-by-date/", methods=["POST"])
 def filter_bookings_by_date():
-    booking_date = request.json["date"]
-    bookings = booking_service.filter_bookings_by_date(booking_date)
+    data = request.json
+    bookings = booking_service.filter_bookings_by_date(data)
     return jsonify(bookings), 200
 
 

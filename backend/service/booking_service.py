@@ -78,7 +78,9 @@ def delete_booking(booking_id):
     db.session.commit()
 
 
-def filter_bookings_by_date(date):
+def filter_bookings_by_date(data):
+    date = data["date"]
+    bookable_id = data["bookable_id"]
     date = mdy_to_dmy(date)
     if (
         is_date(
@@ -88,7 +90,9 @@ def filter_bookings_by_date(date):
     ):
         return "Invalid date", 400
 
-    filtered_bookings = Booking.query.filter_by(date=date).all()
+    filtered_bookings = Booking.query.filter_by(
+        date=date, bookable_id=bookable_id
+    ).all()
     return [booking.serialize() for booking in filtered_bookings]
 
 

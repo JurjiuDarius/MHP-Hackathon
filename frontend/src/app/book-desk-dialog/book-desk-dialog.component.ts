@@ -109,14 +109,16 @@ export class BookDeskDialogComponent {
         console.log(error);
       },
     });
-    this.bookingService.getBookingsByDate(data.date).subscribe({
-      next: (response) => {
-        this.bookings = response;
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+    this.bookingService
+      .getBookingsByDate(data.date, data.bookable_id)
+      .subscribe({
+        next: (response) => {
+          this.bookings = response;
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
   }
 
   toggleSelection(person: string) {
