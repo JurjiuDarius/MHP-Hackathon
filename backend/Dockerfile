@@ -13,4 +13,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
 # Run the application when the container launches
-CMD ["python", "app.py"]
+RUN chmod u+x ./entrypoint.sh
+ENTRYPOINT ["sh", "/app/entrypoint.sh"]
