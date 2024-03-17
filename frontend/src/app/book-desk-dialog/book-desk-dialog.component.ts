@@ -81,48 +81,7 @@ export class BookDeskDialogComponent {
     private snackbar: MatSnackBar
   ) {
     // Add some sample bookings to the bookings array
-    this.bookings = [
-      {
-        id: 1,
-        user_id: 'user1',
-        bookable_id: 'CLUJ_5_beta_33_1',
-        date: '2024/03/17',
-        start: '09:00',
-        end: '10:00',
-      },
-      {
-        id: 2,
-        user_id: 'user2',
-        bookable_id: 'CLUJ_5_beta_33_1',
-        date: '2024/03/17',
-        start: '10:00',
-        end: '11:00',
-      },
-      {
-        id: 3,
-        user_id: 'user3',
-        bookable_id: 'CLUJ_5_beta_33_2',
-        date: '2024/03/17',
-        start: '09:00',
-        end: '10:00',
-      },
-      {
-        id: 4,
-        user_id: 'user4',
-        bookable_id: 'CLUJ_5_beta_33_4',
-        date: '2024/03/17',
-        start: '10:00',
-        end: '11:00',
-      },
-      {
-        id: 5,
-        user_id: 'user5',
-        bookable_id: 'CLUJ_5_beta_32_4',
-        date: '2024/03/17',
-        start: '09:00',
-        end: '10:00',
-      },
-    ];
+
     if (this.data.bookable_id.startsWith('CLUJ')) {
       this.bookableService
         .getAvailabilityForBookable(data.bookable_id, data.date)
@@ -153,14 +112,16 @@ export class BookDeskDialogComponent {
         console.log(error);
       },
     });
-    this.bookingService.getBookingsByDate(data.date).subscribe({
-      next: (response) => {
-        this.bookings = response;
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+    this.bookingService
+      .getBookingsByDate(data.date, data.bookable_id)
+      .subscribe({
+        next: (response) => {
+          this.bookings = response;
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
   }
 
   toggleSelection(person: string) {

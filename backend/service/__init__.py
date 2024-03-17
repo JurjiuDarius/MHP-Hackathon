@@ -1,2 +1,2 @@
-from .authenticatin_service import *
+from .authentication_service import *
 from .booking_service import *

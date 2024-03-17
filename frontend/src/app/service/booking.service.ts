@@ -26,8 +26,11 @@ export class BookingService {
   deleteBooking(bookingID: number) {
     return this.http.delete(`${this.apiUrl}/bookings/${bookingID}`);
   }
-  getBookingsByDate(date: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/bookings/filter-by-date/`, { date });
+  getBookingsByDate(date: string, bookable_id: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/bookings/filter-by-date/`, {
+      date,
+      bookable_id,
+    });
   }
   getCurrentBookingsForUser(userId: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/bookings/current/user/${userId}`);

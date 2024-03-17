@@ -19,8 +19,6 @@ if __name__ == "__main__":
         re.DOTALL,
     )
 
-    for match in room_matches:
-        print(match)
     with open("extracted_desks.txt", "w") as f:
         for match in desk_matches:
             lines = match.strip("#").split("\n")
