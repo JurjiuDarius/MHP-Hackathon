@@ -1,5 +1,3 @@
-The master branch contains the latest app version.
-
 # The app
 
 ### Design Decisions
@@ -88,4 +86,6 @@ After some waiting the app should be running and the command line should display
 
 <li> We pushed the ssl certificates to make testing easier. These are generated locally, so your browser might not want to accept them. To fix this, navigate to the backend url in a browser, and click continue. This should convince the browser that the url is safe when making requests via javascript.
 <li> The app automatically adds rooms and users upon startup. The requirements said there was no signup functionality, so we added our own data for testing.
+<li>The master branch contains the latest app version.
+
 <li>Lastly, we want to thank the organisers for the event. Good job, guys. We mean it.
