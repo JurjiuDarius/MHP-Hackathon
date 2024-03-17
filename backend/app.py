@@ -15,7 +15,7 @@ def create_app():
     if os.path.exists("/.dockerenv"):
         load_dotenv(override=False)
     else:
-        load_dotenv(override=False)
+        load_dotenv(override=True)
 
     app = Flask(__name__)
     env_config = os.getenv("APP_SETTINGS")
