@@ -1,4 +1,15 @@
-<section>
+<h1>
+  Welcome to MHP Booking!
+</h1>
+<h2>
+  Where every click is a step closer to your dream desk destination. Get ready to groove your way to productivity!
+</h2>
+
+<div>
+
+</div>
+
+<div class="datePicker">
   <mat-form-field class="example-full-width">
     <mat-label>Choose a date</mat-label>
     <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" />
@@ -6,10 +17,10 @@
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
   </mat-form-field>
-  <button (click)="onDateSelected($event)">
-    Click to view desk availability
+  <button mat-button (click)="onDateSelected($event)">
+    <mat-icon>touch_app</mat-icon> Check desk availability
   </button>
-</section>
+</div>
 <section class="harta">
   <img class="locuri_background" src="assets/HartaLocuriBackground.jpg" />
 

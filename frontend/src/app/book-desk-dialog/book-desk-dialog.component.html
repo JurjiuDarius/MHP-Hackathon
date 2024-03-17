@@ -1,6 +1,6 @@
 <div class="modal">
   <h2>
-    Create a booking for <b>{{ data.bookable_id }}</b>
+    Book <b>{{ data.bookable_id }}</b> on <b> {{ data.date }} </b>
   </h2>
   <hr />
   <mat-card *ngIf="availabilityMorning"
@@ -12,20 +12,25 @@
     {{ availabilityEvening }}%
   </mat-card>
   <div class="middle-div">
-    <mat-card class="alte-rezervari">
+    <mat-card class="alte-rezervari" *ngIf="bookings && bookings.length > 0">
       <mat-card-header>Other bookings</mat-card-header>
       <div class="list">
-        <mat-card-content *ngIf="bookings && bookings.length === 0">
-          <mat-card class="no-users-card">No bookings found</mat-card>
-        </mat-card-content>
-        <mat-card-content *ngFor="let booking of bookings">
-          <ng-container *ngIf="booking.bookable_id === data.bookable_id">
-            <mat-card>
-              Start: {{ booking.start }} End:
-              {{ booking.end }}
-            </mat-card>
-          </ng-container>
-        </mat-card-content>
+        <!--        <mat-card-content *ngIf="bookings && bookings.length === 0">-->
+        <!--          <mat-card class="no-users-card">No bookings found</mat-card>-->
+        <!--        </mat-card-content>-->
+        <ng-container>
+          <table mat-table [dataSource]="bookings" class="mat-elevation-z8">
+            <ng-container matColumnDef="start">
+              <th mat-header-cell *matHeaderCellDef>Start</th>
+              <td mat-cell *matCellDef="let booking">{{ booking.start }}</td>
+            </ng-container>
+            <ng-container matColumnDef="end">
+              <th mat-header-cell *matHeaderCellDef>End</th>
+              <td mat-cell *matCellDef="let booking">{{ booking.end }}</td>
+            </ng-container>
+            <tr mat-row *matRowDef="let row; columns: ['start', 'end']"></tr>
+          </table>
+        </ng-container>
       </div>
     </mat-card>
     <div class="time-selection">
@@ -53,10 +58,7 @@
   </div>
   <br />
 
-  <mat-card
-    *ngIf="!data.bookable_id.startsWith('CLUJ')"
-    class="participanti-meeting"
-  >
+  <mat-card *ngIf="capacity > 1" class="participanti-meeting">
     <mat-card-header> Add people to the meeting </mat-card-header>
     <div class="list">
       <mat-card-content *ngIf="users && users.length === 0">

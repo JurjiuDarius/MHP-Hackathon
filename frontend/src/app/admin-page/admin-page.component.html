@@ -1,11 +1,49 @@
-<div class="calendar">
-  <mat-card class="demo-inline-calendar-card">
-    <mat-calendar
-      [selected]="selected"
-      (selectedChange)="onDateSelected($event)"
-      [dateClass]="dateClass"
-    ></mat-calendar>
+<h1>
+  Admin Dashboard
+</h1>
+<div class="total">
+  <mat-card class="totalUsers">
+    <mat-card-header>Total users:</mat-card-header>
+    <mat-card-content>
+      <b>{{users}}</b>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="totalDesks">
+    <mat-card-header>Total desks:</mat-card-header>
+    <mat-card-content>
+      <b>135</b>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="totalRooms">
+    <mat-card-header>Total meeting rooms:</mat-card-header>
+    <mat-card-content>
+      <b>6</b>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="totalMeetParticipant">
+    <mat-card-header>Total rooms capacity:</mat-card-header>
+    <mat-card-content>
+      <b>50</b>
+    </mat-card-content>
   </mat-card>
 </div>
+<div class="container">
+  <div class="calendar">
+    <div class="calendar-instructiuni">
+      <h3>Choose a date to view booking forecast</h3>
+    </div>
+    <div class="calendar-card">
+      <mat-card class="demo-inline-calendar-card">
+        <mat-calendar
+          [selected]="selected"
+          (selectedChange)="onDateSelected($event)"
+          [dateClass]="dateClass"
+        ></mat-calendar>
+      </mat-card>
+    </div>
 
-<app-piechart [percentage]="percentage"></app-piechart>
+  </div>
+  <div class="pie-chart">
+    <app-piechart [percentage]="percentage"></app-piechart>
+  </div>
+</div>
