@@ -1,5 +1,5 @@
-PitLane   621  110
-DryLane   676  110
+Pit-Lane   621  110
+Dry-Lane   676  110
 JockerLap   730  110
 Quick8   275  230
 PolePosition   1385  500

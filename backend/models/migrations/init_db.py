@@ -15,7 +15,7 @@ def add_rooms_to_database():
         for line in file:
             split_info = id = line.strip().split(" ")
             if "" in split_info:
-                split_info.remove(" ")
+                split_info.remove("")
             id = split_info[0]
             capacity = int(split_info[3])
             room = Room.query.get(id)

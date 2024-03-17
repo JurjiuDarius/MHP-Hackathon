@@ -168,6 +168,9 @@ export class FloorMapComponent {
     private datePipe: DatePipe,
     private bookableService: BookableService
   ) {
+    this.buttonIds.forEach((id) => {
+      this.occupationDict[id] = 0;
+    });
     this.setOccupationDict();
   }
 
