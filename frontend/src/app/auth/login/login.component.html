@@ -53,6 +53,7 @@
         </mat-radio-group>
         <div class="login-buttons">
           <button
+            class="login-button"
             name="loginButton"
             mat-raised-button
             color="primary"
@@ -61,15 +62,7 @@
           >
             Login
           </button>
-          <button
-            name="signupButton"
-            mat-raised-button
-            class="sign-up-button"
-            color="primary"
-            (click)="goToSignup()"
-          >
-            Sign Up
-          </button>
+
         </div>
       </form>
       <mat-error *ngIf="this.errorMessage">
